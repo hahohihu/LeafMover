@@ -1,18 +1,20 @@
 #Include "Utility.ahk"
 
-InputArea := Area.FromRaw(800, 200, 910, 300)
+InputMaterials := Area.FromRaw(800, 200, 910, 300)
+InputQuantities := Area.FromRaw(875, 215, 900, 275)
 
 ConsumesGoodMaterial() {
     Loop Files, "Matches\*"
     {
-        if InputArea.ImageTest(A_LoopFileFullPath)
+        if InputMaterials.ImageTest(A_LoopFileFullPath)
             return true
     }
     return false
 }
 
 NotEnoughMaterials() {
-    return PixelSearch(&Px, &Py, 875, 215, 900, 275, 0x830808)
+    NotEnoughRed := 0x830808
+    return InputQuantities.PixelTest(NotEnoughRed)
 }
 
 MakeEssences() {
@@ -26,15 +28,17 @@ BadTrade() {
     return ConsumesGoodMaterial() or NotEnoughMaterials()
 }
 
-TradeRightButtonSpot := Point(1580, 230)
+RightButton := Point(1580, 230)
+LeftButton := Point(1380, 230)
 
 ChangeAvailable() {
-    return not PixelSearch(&Px, &Py, 1580, 230, 1581, 231, BackgroundBrown)
+    return not RightButton.PixelTest(BackgroundBrown)
 }
 
 TradePending() {
-    return PixelSearch(&Px, &Py, 1250, 220, 1280, 240, CheckGreen)
-        or PixelSearch(&Px, &Py, 1380, 230, 1381, 231, BackgroundBrown)
+    CheckArea := Area.FromRaw(1250, 220, 1280, 240)
+    return CheckArea.PixelTest(CheckGreen)
+        or LeftButton.PixelTest(BackgroundBrown)
 }
 
 MakeTrade() {

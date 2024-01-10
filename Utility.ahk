@@ -15,6 +15,10 @@ class Point {
     ImageTest(image) {
         return this.ToArea().ImageTest(image)
     }
+
+    PixelTest(image) {
+        return this.ToArea().PixelTest(image)
+    }
 }
 
 class Area {
@@ -34,6 +38,10 @@ class Area {
 
     ImageTest(image) {
         return ImageSearch(&Px, &Py, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, image)
+    }
+
+    PixelTest(pixel) {
+        return PixelSearch(&Px, &Py, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, pixel)
     }
 }
 
