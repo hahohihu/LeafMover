@@ -67,7 +67,7 @@ TakeAllTrades() {
     LoadPetTeam(1)
     Clear
     Trades.Open
-    Loop 15 {
+    Loop 20 {
         Trades.CollectAll
         Trades.Refresh
         if not Trades.TradeOnce() {
