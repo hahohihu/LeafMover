@@ -20,6 +20,10 @@ class Area {
         this.BottomRight := BottomRight
     }
 
+    FromRaw(x1, y1, x2, y2) {
+        return Area(Point(x1, y1), Point(x2, y2))
+    }
+
     ToArea() {
         return this
     }
