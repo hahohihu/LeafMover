@@ -74,3 +74,10 @@ ScreenScan() {
         x += 200
     }
 }
+
+ScrollUp(n) {
+    Loop n {
+        Send "{WheelUp}"
+        Sleep 50
+    }
+}
