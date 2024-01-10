@@ -52,7 +52,7 @@ CoordMode "Mouse", "Client"
 
 ^T::
 {
-    if ChangeAvailable()
+    if ConsumesGoodMaterial()
         MsgBox "Yes"
     else
         MsgBox "No"

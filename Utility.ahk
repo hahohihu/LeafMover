@@ -11,6 +11,10 @@ class Point {
     ToArea() {
         return Area(this, Point(this.x + 1, this.y + 1))
     }
+
+    ImageTest(image) {
+        return this.ToArea().ImageTest(image)
+    }
 }
 
 class Area {
@@ -20,18 +24,17 @@ class Area {
         this.BottomRight := BottomRight
     }
 
-    FromRaw(x1, y1, x2, y2) {
+    static FromRaw(x1, y1, x2, y2) {
         return Area(Point(x1, y1), Point(x2, y2))
     }
 
     ToArea() {
         return this
     }
-}
 
-ImageTest(area, image) {
-    area := area.ToArea()
-    return ImageSearch(&Px, &Py, area.TopLeft.x, area.TopLeft.y, area.BottomRight.x, area.BottomRight.y, image)
+    ImageTest(image) {
+        return ImageSearch(&Px, &Py, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, image)
+    }
 }
 
 Clicc(point, y := "NaN") {

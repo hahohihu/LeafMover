@@ -1,9 +1,11 @@
 #Include "Utility.ahk"
 
+InputArea := Area.FromRaw(800, 200, 910, 300)
+
 ConsumesGoodMaterial() {
     Loop Files, "Matches\*"
     {
-        if ImageSearch(&Px, &Py, 800, 200, 910, 300, A_LoopFileFullPath)
+        if InputArea.ImageTest(A_LoopFileFullPath)
             return true
     }
     return false
