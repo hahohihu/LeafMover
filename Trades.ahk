@@ -1,4 +1,5 @@
 #Include "Utility.ahk"
+#Include "Pets.ahk"
 
 class Trades {
     static Open() {
@@ -63,6 +64,7 @@ class Trades {
 }
 
 TakeAllTrades() {
+    LoadPetTeam(1)
     Clear
     Trades.Open
     Loop 15 {
@@ -71,6 +73,5 @@ TakeAllTrades() {
         if not Trades.TradeOnce() {
             break
         }
-        Sleep 200
     }
 }
