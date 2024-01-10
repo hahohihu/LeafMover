@@ -70,7 +70,7 @@ StartTrades() {
 TakeAllTrades() {
     Clear
     Trades
-    Loop 1 {
+    Loop 15 {
         CollectAll
         Refresh
         if not StartTrades() {
