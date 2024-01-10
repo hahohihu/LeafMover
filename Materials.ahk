@@ -1,6 +1,6 @@
 #Include "Pets.ahk"
 
-class Kokkaupunki {
+class DarkGlade {
     static Open() {
         ; todo
     }
@@ -13,5 +13,5 @@ class Kokkaupunki {
 }
 
 FarmMaterials() {
-    Kokkaupunki.Farm()
+    DarkGlade.Farm()
 }

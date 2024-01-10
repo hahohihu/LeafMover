@@ -1,11 +1,11 @@
 #Include "Utility.ahk"
 
-class MaterialTrades {
+class Kokkaupuni {
     static Open() {
         ; todo
     }
     
-    ConsumesGoodMaterial() {
+    static ConsumesGoodMaterial() {
         InputMaterials := Area.FromRaw(800, 200, 910, 300)
         Loop Files, "GoodMaterials\*"
         {
@@ -15,41 +15,52 @@ class MaterialTrades {
         return false
     }
 
-    EnoughMaterials() {
+    static EnoughMaterials() {
         InputQuantities := Area.FromRaw(875, 215, 900, 275)
         return not InputQuantities.PixelTest(0x830808)
     }
 
-    ChangeAvailable() {
+    static ChangeAvailable() {
         RightButtonBrightSpot := Point(1580, 230)
         return not RightButtonBrightSpot.PixelTest(BackgroundBrown)
     }
 
-    TradePending() {
+    static TradePending() {
         LeftButtonBrightSpot := Point(1380, 230)
         return LeftButtonBrightSpot.PixelTest(BackgroundBrown)
     }
 
-    TradeComplete() {
+    static TradeComplete() {
         CheckArea := Area.FromRaw(1250, 220, 1280, 240)
         return CheckArea.PixelTest(CheckGreen)
     }
 
-    Trade() {
+    static Trade() {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
-        ; Clicc 430, 660 ; wayland
-        Clicc 1000, 680 ; torvalds
-        Loop 70 {
-            if (MaterialTrades.ChangeAvailable() and MaterialTrades.ConsumesGoodMaterial()) or not MaterialTrades.EnoughMaterials() {
+        Failures := 0
+        Loop 15 {
+            if Failures >= 3 {
+                return false
+            }
+            if (Kokkaupuni.ChangeAvailable() and Kokkaupuni.ConsumesGoodMaterial()) or not Kokkaupuni.EnoughMaterials() {
                 RightButton.Click()
+                Failures++
             } else {
                 LeftButton.Click()
-                While MaterialTrades.TradePending() {
+                While Kokkaupuni.TradePending() {
                     Sleep 50
                 }
                 LeftButton.Click()
+                Failures := 0
             }
         }
+        return true
     }
+}
+
+TradeMaterials() {
+    ; Clicc 430, 660 ; wayland
+    Clicc 1000, 680 ; torvalds
+    return Kokkaupuni.Trade()
 }
