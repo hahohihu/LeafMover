@@ -28,17 +28,19 @@ BadTrade() {
     return ConsumesGoodMaterial() or NotEnoughMaterials()
 }
 
-RightButton := Point(1580, 230)
-LeftButton := Point(1380, 230)
+RightButton := Point(1530, 230)
+RightButtonBrightSpot := Point(1580, 230)
+LeftButton := Point(1330, 230)
+LeftButtonBrightSpot := Point(1380, 230)
 
 ChangeAvailable() {
-    return not RightButton.PixelTest(BackgroundBrown)
+    return not RightButtonBrightSpot.PixelTest(BackgroundBrown)
 }
 
 TradePending() {
     CheckArea := Area.FromRaw(1250, 220, 1280, 240)
     return CheckArea.PixelTest(CheckGreen)
-        or LeftButton.PixelTest(BackgroundBrown)
+        or LeftButtonBrightSpot.PixelTest(BackgroundBrown)
 }
 
 MakeTrades() {
@@ -46,7 +48,7 @@ MakeTrades() {
     ; Clicc 430, 660 ; wayland
     Clicc 1000, 680 ; torvalds
     Loop 70 {
-        if BadTrade() and not TradePending() {
+        if ChangeAvailable() and BadTrade() and not TradePending() {
             RightButton.Click()
         } else {
             LeftButton.Click()

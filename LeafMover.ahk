@@ -16,7 +16,7 @@ CoordMode "Mouse", "Client"
 {
     Loop {
         MakeEssences
-        Loop 9 {
+        Loop 30 {
             ScreenScan
         }
     }
@@ -43,7 +43,7 @@ CoordMode "Mouse", "Client"
 
 ^T::
 {
-    if ConsumesGoodMaterial()
+    if ChangeAvailable()
         MsgBox "Yes"
     else
         MsgBox "No"
