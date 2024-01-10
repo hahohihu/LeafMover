@@ -17,6 +17,10 @@ class Pets {
                 y := 625
         }
         Clicc 350, y
-
     }
+}
+
+LoadPetTeam(n) {
+    Pets.OpenTeams
+    Pets.LoadTeam(n)
 }

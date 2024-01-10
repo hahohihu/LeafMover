@@ -60,17 +60,17 @@ class Trades {
         }
         return true
     }
+}
 
-    static TakeAll() {
-        Clear
-        Trades.Open
-        Loop 15 {
-            Trades.CollectAll
-            Trades.Refresh
-            if not Trades.TradeOnce() {
-                break
-            }
-            Sleep 200
+TakeAllTrades() {
+    Clear
+    Trades.Open
+    Loop 15 {
+        Trades.CollectAll
+        Trades.Refresh
+        if not Trades.TradeOnce() {
+            break
         }
+        Sleep 200
     }
 }
