@@ -5,7 +5,10 @@ class Entry {
     }
 
     Execute() {
-        return (this.action)()
+        Clear
+        ret := (this.action)()
+        Clear
+        return ret
     }
 }
 

@@ -2,7 +2,6 @@
 
 class Pets {
     static OpenTeams() {
-        Clear
         Clicc 444, 53
         Clicc 544, 872
     }

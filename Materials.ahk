@@ -6,8 +6,8 @@ class Kokkaupunki {
     }
 
     static Farm() {
-        Clear
         LoadPetTeam(2)
+        Clear
         ScreenScan
     }
 }

@@ -15,7 +15,6 @@ CoordMode "Mouse", "Client"
 ; game must be windowed
 
 WinActivate GameTitle
-Clear
 
 poll := TimedPoll()
 poll.AddStartup(Entry(TakeAllTrades, 120000))
@@ -24,5 +23,4 @@ Loop {
     action := poll.Wait()
     action.Execute()
     poll.Add(action)
-    Clear
 }

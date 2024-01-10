@@ -38,7 +38,6 @@ class MaterialTrades {
     Trade() {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
-        Clear
         ; Clicc 430, 660 ; wayland
         Clicc 1000, 680 ; torvalds
         Loop 70 {
