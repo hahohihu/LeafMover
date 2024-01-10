@@ -26,7 +26,13 @@ class TimedPoll {
         this.Add(entry)
     }
 
-    Take() {
-        return this.entries.Pop()
+    Wait() {
+        Loop {
+            try {
+                return this.entries.RemoveAt(1)
+            } catch ValueError as e {
+                Sleep 1000
+            }
+        }
     }
 }

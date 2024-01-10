@@ -5,6 +5,7 @@
 #Include "Trades.ahk"
 #Include "Utility.ahk"
 #Include "TimedPoll.ahk"
+#Include "Materials.ahk"
 
 ^Esc::ExitApp
 ^P::Pause(-1)
@@ -18,16 +19,10 @@ Clear
 
 poll := TimedPoll()
 poll.AddStartup(Entry(TakeAllTrades, 120000))
-LoadPetTeam(2)
+poll.Add(Entry(FarmMaterials, 5000))
 Loop {
-    try {
-        action := poll.Take()
-        action.Execute()
-        poll.Add(action)
-        LoadPetTeam(2)
-    } catch Error as e {
-        Clear
-        ScreenScan
-        Sleep 3000
-    }
+    action := poll.Wait()
+    action.Execute()
+    poll.Add(action)
+    Clear
 }
