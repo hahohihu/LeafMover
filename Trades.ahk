@@ -19,6 +19,16 @@ ScrollToTop() {
     }
 }
 
+MAX_Y_END := 700
+FindYEnd(start) {
+    activeArea := Area.FromRaw(1300, start, 1330, 850)
+    if activeArea.PixelSearch(&x, &y, QuitRed, 10) {
+        return y - 40
+    } else {
+        return MAX_Y_END
+    }
+}
+
 GoodTrade(y1, y2, &x, &y) {
     InputMaterials := Area.FromRaw(910, y1, 960, y2)
     Loop Files, "Trades\*"
@@ -31,38 +41,41 @@ GoodTrade(y1, y2, &x, &y) {
     return false
 }
 
+; returns true if there may be more trades
 StartTrades() {
     ScrollBottom := Point(1635, 778)
     ScrollToTop
-    yBound := 250
-    while yBound < 700 {
-        if GoodTrade(yBound, yBound + 80, &x, &y) {
+    yStart := 250
+    yEnd := FindYEnd(yStart)
+    if yEnd < 320 {
+        return false
+    }
+    while yStart < yEnd {
+        if GoodTrade(yStart, yStart + 80, &x, &y) {
             ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
             if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                 Clicc(bx, by)
-            } else {
-                ; MsgBox "Couldn't start " yBound
             }
         }
-        if ScrollBottom.PixelTest(ActiveBeige) {
-            yBound += 75
+        if ScrollBottom.PixelTest(ActiveBeige) or yEnd < MAX_Y_END {
+            yStart += 75
         } else {
             Send "{WheelDown}"
-            yBound += 5
+            yEnd := FindYEnd(yStart)
         }
     }
+    return true
 }
 
-TradeOnce() {
-    CollectAll
-    Refresh
-    StartTrades
-    Sleep 200
-}
-
-WinActivate GameTitle
-Clear
-Trades
-Loop 4 {
-    TradeOnce
+TakeAllTrades() {
+    Clear
+    Trades
+    Loop 15 {
+        CollectAll
+        Refresh
+        if not StartTrades {
+            break
+        }
+        Sleep 200
+    }
 }

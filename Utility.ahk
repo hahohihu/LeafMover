@@ -2,6 +2,7 @@ GameTitle := "Leaf Blower Revolution"
 
 BackgroundBrown := 0x97714a
 ActiveBeige := 0xfff1d2
+QuitRed := 0xdd1a1e
 CheckGreen := 0x2fd117
 
 class Point {
