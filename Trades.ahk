@@ -46,8 +46,6 @@ Refresh
             ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
             if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                 Clicc(bx, by)
-                MsgBox "Clicked " bx ", " by
-                WinActivate GameTitle
             } else {
                 ; MsgBox "Couldn't start " yBound
             }
