@@ -10,7 +10,7 @@ ConsumesGoodMaterial() {
     return false
 }
 
-NotEnoughMaterials() {
+EnoughMaterials() {
     InputQuantities := Area.FromRaw(875, 215, 900, 275)
     return InputQuantities.PixelTest(0x830808)
 }
@@ -22,11 +22,6 @@ MakeEssences() {
     Clicc 1255, 230 ; Cosmic
     Clicc 1255, 435 ; Leaf
 }
-
-BadTrade() {
-    return ConsumesGoodMaterial() or NotEnoughMaterials()
-}
-
 
 ChangeAvailable() {
     RightButtonBrightSpot := Point(1580, 230)
@@ -50,13 +45,14 @@ MakeTrades() {
     ; Clicc 430, 660 ; wayland
     Clicc 1000, 680 ; torvalds
     Loop 70 {
-        if TradeComplete() or TradePending() {
-            LeftButton.Click()
-        } else if ChangeAvailable() and BadTrade() {
+        if (ChangeAvailable() and ConsumesGoodMaterial()) or not EnoughMaterials() {
             RightButton.Click()
         } else {
             LeftButton.Click()
+            While TradePending() {
+                Sleep 50
+            }
+            LeftButton.Click()
         }
-        Sleep 500
     }
 }
