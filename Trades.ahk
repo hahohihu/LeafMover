@@ -79,6 +79,3 @@ TakeAllTrades() {
         Sleep 200
     }
 }
-
-WinActivate GameTitle
-TakeAllTrades

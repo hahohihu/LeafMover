@@ -2,7 +2,7 @@
 
 ConsumesGoodMaterial() {
     InputMaterials := Area.FromRaw(800, 200, 910, 300)
-    Loop Files, "Matches\*"
+    Loop Files, "GoodMaterials\*"
     {
         if InputMaterials.ImageTest(A_LoopFileFullPath)
             return true
