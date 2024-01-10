@@ -4,8 +4,8 @@ class Entry {
         this.duration := duration
     }
 
-    execute() {
-        return this.action()
+    Execute() {
+        return (this.action)()
     }
 }
 

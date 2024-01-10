@@ -17,18 +17,18 @@ WinActivate GameTitle
 Clear
 
 poll := TimedPoll()
-poll.Add(Entry(TakeAllTrades, 140000))
-TakeAllTrades
+poll.Add(Entry(TakeAllTrades, 10000))
+; TakeAllTrades
 LoadPetTeam(2)
 Loop {
     try {
         action := poll.Take()
-        action.execute()
+        action.Execute()
         poll.Add(action)
         LoadPetTeam(2)
-    } catch as e {
+    } catch Error as e {
+        Clear
         ScreenScan
-        Sleep 1000
+        Sleep 3000
     }
-    
 }

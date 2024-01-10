@@ -81,3 +81,8 @@ ScrollUp(n) {
         Sleep 50
     }
 }
+
+Msg(msg) {
+    MsgBox msg
+    WinActivate GameTitle
+}
