@@ -1,6 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 
-#Include "Materials.ahk"
+#Include "Alchemy.ahk"
+#Include "MaterialTrades.ahk"
 #Include "Utility.ahk"
 
 ^Esc::ExitApp
@@ -11,15 +12,6 @@ CoordMode "Mouse", "Client"
 ; game must be windowed
 
 ^L::ScreenScan
-^#L:: 
-{
-    Loop {
-        MakeEssences
-        Loop 30 {
-            ScreenScan
-        }
-    }
-}
 
 ^#P::
 {
@@ -32,23 +24,5 @@ CoordMode "Mouse", "Client"
         Sleep 40000
     }
 }
-^#C::
-{
-    Loop {
-        MakeEssences
-        MakeTrades
-    }
-}
 
-^#T::
-{
-    if ChangeAvailable()
-        MsgBox "Yes"
-    else
-        MsgBox "No"
-}
-
-^Y::
-{
-
-}
+WinActivate GameTitle

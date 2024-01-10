@@ -36,7 +36,7 @@ class Trades {
     }
 
     ; returns true if there may be more trades
-    static StartPage() {
+    static TradeOnce() {
         ScrollBottom := Point(1635, 778)
         ScrollUp 4
         yStart := 250
@@ -61,13 +61,13 @@ class Trades {
         return true
     }
 
-    static TakeAllTrades() {
+    static TakeAll() {
         Clear
         Trades.Open
         Loop 15 {
             Trades.CollectAll
             Trades.Refresh
-            if not Trades.StartPage() {
+            if not Trades.TradeOnce() {
                 break
             }
             Sleep 200
