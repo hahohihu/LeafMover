@@ -1,19 +1,22 @@
 #Include "Utility.ahk"
 
-PetTeams() {
-    Clear
-    Clicc 444, 53 ; pets
-    Clicc 544, 872 ; teams
-}
+class Pets {
+    static OpenTeams() {
+        Clear
+        Clicc 444, 53
+        Clicc 544, 872
+    }
 
-LoadPetTeam1() {
-    Clicc 350, 425
-}
+    static LoadTeam(n) {
+        switch n {
+            case 1:
+                y := 425
+            case 2:
+                y := 525
+            case 3:
+                y := 625
+        }
+        Clicc 350, y
 
-LoadPetTeam2() {
-    Clicc 350, 525
-}
-
-LoadPetTeam3() {
-    Clicc 350, 625
+    }
 }
