@@ -15,7 +15,7 @@ CollectAll() {
 ScrollToTop() {
     Loop 4 {
         Send "{WheelUp}"
-        Sleep 100
+        Sleep 50
     }
 }
 
@@ -31,14 +31,8 @@ GoodTrade(y1, y2, &x, &y) {
     return false
 }
 
-ScrollBottom := Point(1635, 778)
-
-WinActivate GameTitle
-Clear
-Trades
-CollectAll
-Refresh
-{
+StartTrades() {
+    ScrollBottom := Point(1635, 778)
     ScrollToTop
     yBound := 250
     while yBound < 700 {
@@ -58,6 +52,17 @@ Refresh
         }
     }
 }
-Sleep 200
-MouseMove -250, 30
-SoundBeep
+
+TradeOnce() {
+    CollectAll
+    Refresh
+    StartTrades
+    Sleep 200
+}
+
+WinActivate GameTitle
+Clear
+Trades
+Loop 4 {
+    TradeOnce
+}
