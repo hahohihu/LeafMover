@@ -19,6 +19,10 @@ class Point {
     PixelTest(image) {
         return this.ToArea().PixelTest(image)
     }
+
+    Click() {
+        Clicc(this.x, this.y)
+    }
 }
 
 class Area {
@@ -45,13 +49,7 @@ class Area {
     }
 }
 
-Clicc(point, y := "NaN") {
-    if y = "NaN" {
-        x := point.x
-        y := point.y
-    } else {
-        x := point
-    }
+Clicc(x, y) {
     Click x, y, "Down"
     Sleep 50
     Click x, y, "Up"
