@@ -1,3 +1,5 @@
+GameTitle := "Leaf Blower Revolution"
+
 BackgroundBrown := 0x97714a
 CheckGreen := 0x2fd117
 
@@ -10,10 +12,6 @@ class Point {
 
     ToArea() {
         return Area(this, Point(this.x + 1, this.y + 1))
-    }
-
-    ImageTest(image) {
-        return this.ToArea().ImageTest(image)
     }
 
     PixelTest(image) {
@@ -35,17 +33,21 @@ class Area {
     static FromRaw(x1, y1, x2, y2) {
         return Area(Point(x1, y1), Point(x2, y2))
     }
-
-    ToArea() {
-        return this
+    
+    ImageSearch(&x, &y, image) {
+        return ImageSearch(&x, &y, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, image)
     }
 
     ImageTest(image) {
-        return ImageSearch(&Px, &Py, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, image)
+        return this.ImageSearch(&x, &y, image)
     }
 
-    PixelTest(pixel) {
-        return PixelSearch(&Px, &Py, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, pixel)
+    PixelSearch(&x, &y, pixel, variation := 0) {
+        return PixelSearch(&x, &y, this.TopLeft.x, this.TopLeft.y, this.BottomRight.x, this.BottomRight.y, pixel, variation)
+    }
+
+    PixelTest(pixel, variation := 0) {
+        return this.PixelSearch(&x, &y, pixel, variation)
     }
 }
 

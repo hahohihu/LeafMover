@@ -6,7 +6,6 @@
 ^Esc::ExitApp
 ^P::Pause(-1)
 
-GameTitle := "Leaf Blower Revolution"
 CoordMode "Mouse", "Client"
 ; client is the default for everything
 ; game must be windowed
@@ -41,7 +40,7 @@ CoordMode "Mouse", "Client"
     }
 }
 
-^T::
+^#T::
 {
     if ChangeAvailable()
         MsgBox "Yes"
