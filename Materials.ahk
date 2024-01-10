@@ -12,7 +12,7 @@ ConsumesGoodMaterial() {
 
 EnoughMaterials() {
     InputQuantities := Area.FromRaw(875, 215, 900, 275)
-    return InputQuantities.PixelTest(0x830808)
+    return not InputQuantities.PixelTest(0x830808)
 }
 
 MakeEssences() {
