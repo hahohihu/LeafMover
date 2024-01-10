@@ -37,16 +37,7 @@ CoordMode "Mouse", "Client"
 {
     Loop {
         MakeEssences
-        Clear
-        ; Clicc 430, 660 ; wayland
-        Clicc 1000, 680 ; torvalds
-        Loop 70 {
-            Clicc 1300, 230 ; trade
-            Sleep 250
-            if NotEnoughMaterials()
-                Clicc 1525, 230 ; cancel
-            Sleep 250
-        }
+        MakeTrades
     }
 }
 
