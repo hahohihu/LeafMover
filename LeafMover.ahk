@@ -47,3 +47,8 @@ CoordMode "Mouse", "Client"
     else
         MsgBox "No"
 }
+
+^Y::
+{
+
+}

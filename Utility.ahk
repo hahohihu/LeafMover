@@ -1,6 +1,7 @@
 GameTitle := "Leaf Blower Revolution"
 
 BackgroundBrown := 0x97714a
+ActiveBeige := 0xfff1d2
 CheckGreen := 0x2fd117
 
 class Point {
@@ -14,8 +15,8 @@ class Point {
         return Area(this, Point(this.x + 1, this.y + 1))
     }
 
-    PixelTest(image) {
-        return this.ToArea().PixelTest(image)
+    PixelTest(color) {
+        return this.ToArea().PixelTest(color)
     }
 
     Click() {
