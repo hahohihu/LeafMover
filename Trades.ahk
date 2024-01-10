@@ -56,8 +56,8 @@ StartTrades() {
             if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                 Clicc(bx, by)
             }
-        }
-        if ScrollBottom.PixelTest(ActiveBeige) or yEnd < MAX_Y_END {
+            yStart := y + 20
+        } else if ScrollBottom.PixelTest(ActiveBeige) or yEnd < MAX_Y_END {
             yStart += 75
         } else {
             Send "{WheelDown}"
@@ -70,12 +70,15 @@ StartTrades() {
 TakeAllTrades() {
     Clear
     Trades
-    Loop 15 {
+    Loop 1 {
         CollectAll
         Refresh
-        if not StartTrades {
+        if not StartTrades() {
             break
         }
         Sleep 200
     }
 }
+
+WinActivate GameTitle
+TakeAllTrades
