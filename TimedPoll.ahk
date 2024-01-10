@@ -15,11 +15,15 @@ class TimedPoll {
     }
 
     Add(entry) {
-        i := this.entries.Length
         SetTimer AddAction, -entry.duration
         AddAction() {
             this.entries.Push(entry)
         }
+    }
+
+    AddStartup(entry) {
+        entry.Execute()
+        this.Add(entry)
     }
 
     Take() {
