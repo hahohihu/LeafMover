@@ -24,6 +24,8 @@ BadTrade() {
     return ConsumesGoodMaterial() or NotEnoughMaterials()
 }
 
+TradeRightButtonSpot := Point(1580, 230)
+
 ChangeAvailable() {
     return not PixelSearch(&Px, &Py, 1580, 230, 1581, 231, BackgroundBrown)
 }
@@ -34,5 +36,5 @@ TradePending() {
 }
 
 MakeTrade() {
-    
+
 }

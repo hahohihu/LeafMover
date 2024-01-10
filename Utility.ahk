@@ -7,6 +7,10 @@ class Point {
         this.x := x
         this.y := y
     }
+
+    ToArea() {
+        return Area(this, Point(this.x + 1, this.y + 1))
+    }
 }
 
 class Area {
@@ -15,6 +19,15 @@ class Area {
         this.TopLeft := TopLeft
         this.BottomRight := BottomRight
     }
+
+    ToArea() {
+        return this
+    }
+}
+
+ImageTest(area, image) {
+    area := area.ToArea()
+    return ImageSearch(&Px, &Py, area.TopLeft.x, area.TopLeft.y, area.BottomRight.x, area.BottomRight.y, image)
 }
 
 Clicc(point, y := "NaN") {
