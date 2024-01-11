@@ -21,7 +21,7 @@ class Essence {
 }
 
 class EssenceCrafting extends Activity {
-    Cooldown := 30000
+    Cooldown := 60000
 
     __New(Choices) {
         this.Choices := Choices

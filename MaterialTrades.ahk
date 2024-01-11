@@ -3,7 +3,7 @@
 
 class MaterialTrades extends Activity {
     Area := Areas.Kokkaupuni
-    Cooldown := 90000
+    Cooldown := 120000
 
     __New(choices) {
         this.choices := choices

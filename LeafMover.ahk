@@ -17,8 +17,8 @@ CoordMode "Mouse", "Client"
 WinActivate GameTitle
 
 poll := TimedPoll()
-; poll.AddStartup(Trades())
-; poll.AddStartup(EssenceCrafting([Essence.Water, Essence.Leaf, Essence.Cosmic]))
-poll.Add(MaterialTrades([Essence.Leaf, Essence.Cosmic, Essence.Water, Essence.Earth]))
-; poll.Add(MaterialFarming())
+poll.AddStartup(Trades())
+poll.AddStartup(EssenceCrafting([Essence.Water, Essence.Leaf, Essence.Cosmic]))
+poll.Add(MaterialTrades([Essence.Leaf, Essence.Water, Essence.Cosmic, Essence.Earth]))
+poll.Add(MaterialFarming())
 poll.Run()
