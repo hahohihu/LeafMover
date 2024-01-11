@@ -59,8 +59,12 @@ class Kokkaupuni {
     }
 }
 
-TradeMaterials() {
-    ; Clicc 430, 660 ; wayland
-    Clicc 1000, 680 ; torvalds
-    return Kokkaupuni.Trade()
+TradeMaterials(choices) {
+    merchantChoice := 0
+    Inner() {
+        choices[Mod(merchantChoice, choices.Length) + 1].merchantLocation.Click()
+        merchantChoice++
+        return Kokkaupuni.Trade()
+    }
+    return Inner
 }
