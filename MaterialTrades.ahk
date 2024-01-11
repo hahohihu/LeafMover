@@ -25,8 +25,11 @@ class MaterialTrades extends Activity {
     static ConsumesGoodMaterial() {
         InputMaterials := Area.FromRaw(800, 200, 910, 300)
         Loop Files, "GoodMaterials\*"
-        {
+        { 
+            ; todo - seem to have false positives ; false negatives are preferable
+            ; disabled for now - not a big difference in conversion ratio
             if InputMaterials.ImageTest(A_LoopFileFullPath) {
+                Msg "Found: " A_LoopFileFullPath
                 return true
             }
         }
@@ -57,15 +60,16 @@ class MaterialTrades extends Activity {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
         Loop 10 {
-            if not MaterialTrades.ChangeAvailable() and not MaterialTrades.EnoughMaterials() {
-                return false
-            }
-            if (MaterialTrades.ChangeAvailable() and MaterialTrades.ConsumesGoodMaterial()) or not MaterialTrades.EnoughMaterials() {
-                RightButton.Click()
+            if not MaterialTrades.EnoughMaterials() {
+                if MaterialTrades.ChangeAvailable() {
+                    RightButton.Click()
+                } else {
+                    return false
+                }
             } else {
                 LeftButton.Click()
                 While MaterialTrades.TradePending() {
-                    Sleep 50
+                    Sleep 500
                 }
                 LeftButton.Click()
             }
