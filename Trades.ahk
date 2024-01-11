@@ -1,7 +1,24 @@
 #Include "Utility.ahk"
 #Include "Pets.ahk"
+#Include "Activity.ahk"
 
-class Trades {
+class Trades extends Activity {
+    Cooldown := 120000
+
+    Act() {
+        LoadPetTeam(1)
+        LoadPetTeam(1) ; redundant in case of pause from saving
+        Clear
+        Trades.Open
+        Loop 20 {
+            Trades.CollectAll
+            Trades.Refresh
+            if not Trades.TradeOnce() {
+                break
+            }
+        }
+    }
+
     static Open() {
         ControlSend "y", , GameTitle
     }
@@ -60,19 +77,5 @@ class Trades {
             }
         }
         return true
-    }
-}
-
-TakeAllTrades() {
-    LoadPetTeam(1)
-    LoadPetTeam(1) ; redundant in case of pause from saving
-    Clear
-    Trades.Open
-    Loop 20 {
-        Trades.CollectAll
-        Trades.Refresh
-        if not Trades.TradeOnce() {
-            break
-        }
     }
 }

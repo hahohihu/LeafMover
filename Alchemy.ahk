@@ -1,4 +1,5 @@
 #Include "Utility.ahk"
+#Include "Activity.ahk"
 
 class Essence {
     class Cosmic {
@@ -19,13 +20,18 @@ class Essence {
     }
 }
 
-MakeEssences(choices) {
-    Inner() {
+class EssenceCrafting extends Activity {
+    Cooldown := 30000
+
+    __New(Choices) {
+        this.Choices := Choices
+    }
+
+    Act() {
         Clicc 800, 905 ; alchemy 
         Clicc 546, 878 ; Essences
-        for choice in choices {
+        for choice in this.Choices {
             choice.location.Click()
         }
     }
-    return Inner
 }

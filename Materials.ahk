@@ -1,17 +1,13 @@
 #Include "Pets.ahk"
+#Include "Areas.ahk"
+#Include "Activity.ahk"
 
-class DarkGlade {
-    static Open() {
-        ; todo
-    }
+class MaterialFarming extends Activity {
+    Area := Areas.DarkGlade
 
-    static Farm() {
+    Act() {
         LoadPetTeam(2)
         Clear
         ScreenScan
     }
-}
-
-FarmMaterials() {
-    DarkGlade.Farm()
 }

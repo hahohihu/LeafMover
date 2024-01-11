@@ -1,37 +1,23 @@
-class Entry {
-    __New(action, duration) {
-        this.action := action
-        this.duration := duration
-    }
-
-    Execute() {
-        Clear
-        ret := (this.action)()
-        Clear
-        return ret
-    }
-}
-
 class TimedPoll {
     __New() {
-        this.entries := []
+        this.activities := []
     }
 
-    Add(entry) {
-        SetTimer AddAction, -entry.duration
-        AddAction() {
-            this.entries.Push(entry)
+    Add(activity) {
+        SetTimer AddActivity, -activity.Cooldown
+        AddActivity() {
+            this.activities.Push(activity)
         }
     }
 
-    AddStartup(entry) {
-        this.entries.Push(entry)
+    AddStartup(activity) {
+        this.activities.Push(activity)
     }
 
     Wait() {
         Loop {
             try {
-                return this.entries.RemoveAt(1)
+                return this.activities.RemoveAt(1)
             } catch ValueError as e {
                 Sleep 1000
             }
@@ -39,10 +25,19 @@ class TimedPoll {
     }
 
     Run() {
+        area := Areas.Kokkaupuni
+        Areas.Open(area)
         Loop {
-            action := poll.Wait()
-            action.Execute()
-            poll.Add(action)
+            activity := poll.Wait()
+            Clear
+            if (activity.Area != Areas.Any && activity.Area != area) {
+                area := activity.Area
+                Areas.Open(activity.Area)
+            }
+            Clear
+            activity.Act()
+            Clear
+            poll.Add(activity)
         }
     }
 }

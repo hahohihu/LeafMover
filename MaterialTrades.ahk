@@ -1,8 +1,41 @@
 #Include "Utility.ahk"
+#Include "Activity.ahk"
 
-class Kokkaupuni {
-    static Open() {
-        ; todo
+class MaterialTrades extends Activity {
+    Area := Areas.Kokkaupuni
+    MerchantChoice := 1
+
+    __New(choices) {
+        this.choices := choices
+        this.failures := choices.Clone()
+        Loop this.failures.Length {
+            this.failures[A_Index] := 0
+        }
+    }
+
+    Act() {
+        this.Cooldown := 500
+        FAILURE_INC := 2
+        WinActivate GameTitle
+        Clear
+        Loop this.choices.Length * FAILURE_INC  * 2 / 3 {
+            if (this.MerchantChoice > this.choices.Length) {
+                this.MerchantChoice := 1
+            }
+            if (this.failures[this.MerchantChoice] > 0) {
+                this.failures[this.MerchantChoice]--
+                this.MerchantChoice++
+            } else {
+                this.choices[this.MerchantChoice].merchantLocation.Click()
+                if not MaterialTrades.Trade() {
+                    this.failures[this.MerchantChoice] := FAILURE_INC
+                }
+                this.MerchantChoice++
+                Sleep 800
+                return
+            }
+        }
+        this.Cooldown := 60000
     }
     
     static ConsumesGoodMaterial() {
@@ -38,33 +71,20 @@ class Kokkaupuni {
     static Trade() {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
-        Failures := 0
-        Loop 15 {
-            if Failures >= 3 {
+        Loop 60 {
+            if not MaterialTrades.ChangeAvailable() and not MaterialTrades.EnoughMaterials() {
                 return false
             }
-            if (Kokkaupuni.ChangeAvailable() and Kokkaupuni.ConsumesGoodMaterial()) or not Kokkaupuni.EnoughMaterials() {
+            if (MaterialTrades.ChangeAvailable() and MaterialTrades.ConsumesGoodMaterial()) or not MaterialTrades.EnoughMaterials() {
                 RightButton.Click()
-                Failures++
             } else {
                 LeftButton.Click()
-                While Kokkaupuni.TradePending() {
+                While MaterialTrades.TradePending() {
                     Sleep 50
                 }
                 LeftButton.Click()
-                Failures := 0
             }
         }
         return true
     }
-}
-
-TradeMaterials(choices) {
-    merchantChoice := 0
-    Inner() {
-        choices[Mod(merchantChoice, choices.Length) + 1].merchantLocation.Click()
-        merchantChoice++
-        return Kokkaupuni.Trade()
-    }
-    return Inner
 }

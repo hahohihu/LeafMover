@@ -1,17 +1,23 @@
 #Include "Utility.ahk"
 
 class Areas {
-    static Open() {
+    static Open(area) {
         ControlSend "v",, GameTitle
         Sleep 100
         Clicc 343, 870 ; Favorites
+        Sleep 100
+        area.favoriteLocation.Click()
+        Sleep 100
     }
 
-    static Kokkaupunki() {
-        Clicc 1300, 514
+    class Kokkaupuni {
+        static favoriteLocation := Point(1300, 514)
     }
 
-    static DarkGlade() {
-        Clicc 1300, 626
+    class DarkGlade {
+        static favoriteLocation := Point(1300, 626)
+    }
+
+    class Any {
     }
 }
