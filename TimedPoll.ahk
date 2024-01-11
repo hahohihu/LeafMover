@@ -25,8 +25,7 @@ class TimedPoll {
     }
 
     Run() {
-        area := Areas.Kokkaupuni
-        Areas.Open(area)
+        area := Areas.Any
         Loop {
             activity := poll.Wait()
             Clear
