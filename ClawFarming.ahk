@@ -3,13 +3,18 @@
 class ClawFarming extends Activity {
     Area := Areas.CheesePub
 
+    static ClawMachine() {
+        Clicc 472, 400 ; claw machine
+    }
+
     Act() {
         ; requires autostart enabled
+        ClawFarming.ClawMachine
         loop 100 {
-            Clicc 472, 400 ; claw machine
             Gem := ClawFarming.LocateGem()
             if not Gem {
                 ControlSend "{Esc}",, GameTitle
+                ClawFarming.ClawMachine
                 continue
             } else {
                 ClawFarming.ReleaseClaw(Gem.x - 20)
