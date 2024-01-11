@@ -73,6 +73,7 @@ class Trades extends Activity {
                 yStart += 75
             } else {
                 Send "{WheelDown}"
+                yStart += 5 ; to guarantee progress
                 yEnd := Trades.FindYEnd(yStart)
             }
         }

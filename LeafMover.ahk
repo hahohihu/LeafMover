@@ -18,7 +18,7 @@ CoordMode "Mouse", "Client"
 WinActivate GameTitle
 
 poll := TimedPoll()
-; poll.AddStartup(Trades())
+poll.AddStartup(Trades())
 Essences := [Essence.Leaf]
 ; poll.AddStartup(EssenceCrafting(Essences))
 ; poll.AddStartup(MaterialTrades(Essences))

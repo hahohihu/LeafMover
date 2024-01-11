@@ -10,14 +10,14 @@ class ClawFarming extends Activity {
     Act() {
         ; requires autostart enabled
         ClawFarming.ClawMachine
-        loop 100 {
+        SetBoolTimer &TimesUp, 30000
+        While not TimesUp {
             Gem := ClawFarming.LocateGem()
             if not Gem {
                 ControlSend "{Esc}",, GameTitle
                 ClawFarming.ClawMachine
-                continue
             } else {
-                ClawFarming.ReleaseClaw(Gem.x - 20)
+                ClawFarming.ReleaseClaw(Gem.x - 10)
             }
             
         }
@@ -28,9 +28,10 @@ class ClawFarming extends Activity {
         TotalClawArea := Area.FromRaw(250, 230, 1600, 330)
         ClawGrey := 0x8b9bb4
         ClawShadow := 0x262b44
-        Loop 400 {
+        Loop 2000 {
             if ExpectedClawArea.PixelTest(ClawShadow, 10) {
                 Clicc 900, 500 ; middle of screen
+                Sleep 2000
                 while TotalClawArea.PixelTest(GemRed, 20) {
                     Sleep 100
                 }
@@ -47,7 +48,7 @@ class ClawFarming extends Activity {
         ExpectedGem := Area.FromRaw(x - 25, y - 25, x + 25, y + 25)
         if ExpectedGem.PixelTest(GemDarkRed, 20)
             and ExpectedGem.PixelTest(GemShadow, 20)
-            and ExpectedGem.PixelTest(White, 3) {
+            and ExpectedGem.PixelTest(White) {
                 return Point(x, y)
         }
     }

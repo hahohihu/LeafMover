@@ -90,3 +90,11 @@ Msg(msg) {
     MsgBox msg
     WinActivate GameTitle
 }
+
+SetBoolTimer(&Bool, Period) {
+    Bool := false
+    SetTimer WakeUp, -Period
+    WakeUp() {
+        Bool := true
+    }
+}
