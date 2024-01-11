@@ -4,6 +4,10 @@ BackgroundBrown := 0x97714a
 ActiveBeige := 0xfff1d2
 QuitRed := 0xdd1a1e
 CheckGreen := 0x2fd117
+White := 0xffffff
+GemRed := 0xff0044
+GemDarkRed := 0x5e0c22
+GemShadow := 0xeb2e60
 
 class Point {
     __New(x, y)

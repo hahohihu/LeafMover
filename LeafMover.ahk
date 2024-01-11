@@ -6,6 +6,7 @@
 #Include "Utility.ahk"
 #Include "TimedPoll.ahk"
 #Include "Materials.ahk"
+#Include "ClawFarming.ahk"
 
 ^Esc::ExitApp
 ^P::Pause(-1)
@@ -17,9 +18,10 @@ CoordMode "Mouse", "Client"
 WinActivate GameTitle
 
 poll := TimedPoll()
-poll.AddStartup(Trades())
+; poll.AddStartup(Trades())
 Essences := [Essence.Leaf]
-poll.AddStartup(EssenceCrafting(Essences))
-poll.AddStartup(MaterialTrades(Essences))
-poll.Add(MaterialFarming())
+; poll.AddStartup(EssenceCrafting(Essences))
+; poll.AddStartup(MaterialTrades(Essences))
+; poll.Add(MaterialFarming())
+poll.Add(ClawFarming())
 poll.Run()

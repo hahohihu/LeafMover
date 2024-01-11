@@ -18,6 +18,10 @@ class Areas {
         static favoriteLocation := Point(1300, 626)
     }
 
+    class CheesePub {
+        static favoriteLocation := Point(1289, 756)
+    }
+
     class Any {
     }
 }
