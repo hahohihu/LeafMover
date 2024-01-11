@@ -65,6 +65,7 @@ class Trades {
 
 TakeAllTrades() {
     LoadPetTeam(1)
+    LoadPetTeam(1) ; redundant in case of pause from saving
     Clear
     Trades.Open
     Loop 20 {

@@ -19,7 +19,7 @@ WinActivate GameTitle
 poll := TimedPoll()
 poll.AddStartup(Entry(TakeAllTrades, 120000))
 poll.AddStartup(Entry(MakeEssences, 30000))
-poll.Add(Entry(FarmMaterials, 5000))
+poll.Add(Entry(FarmMaterials, 10000))
 Loop {
     action := poll.Wait()
     action.Execute()

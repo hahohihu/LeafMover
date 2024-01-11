@@ -25,8 +25,7 @@ class TimedPoll {
     }
 
     AddStartup(entry) {
-        entry.Execute()
-        this.Add(entry)
+        this.entries.Push(entry)
     }
 
     Wait() {
