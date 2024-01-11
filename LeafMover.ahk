@@ -18,11 +18,7 @@ WinActivate GameTitle
 
 poll := TimedPoll()
 poll.AddStartup(Entry(TakeAllTrades, 120000))
-poll.AddStartup(Entry(MakeEssences([Essence.Water, Essence.Cosmic, Essence.Leaf]), 30000))
-; poll.Add(Entry(FarmMaterials, 10000))
-poll.Add(Entry(TradeMaterials([Essence.Water, Essence.Cosmic, Essence.Leaf]), 1500))
-Loop {
-    action := poll.Wait()
-    action.Execute()
-    poll.Add(action)
-}
+poll.AddStartup(Entry(MakeEssences([Essence.Water]), 30000))
+poll.Add(Entry(FarmMaterials, 10000))
+; poll.Add(Entry(TradeMaterials([Essence.Cosmic, Essence.Leaf, Essence.Water, Essence.Earth]), 1500))
+poll.Run()

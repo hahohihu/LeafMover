@@ -37,4 +37,12 @@ class TimedPoll {
             }
         }
     }
+
+    Run() {
+        Loop {
+            action := poll.Wait()
+            action.Execute()
+            poll.Add(action)
+        }
+    }
 }
