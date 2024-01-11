@@ -3,47 +3,32 @@
 
 class MaterialTrades extends Activity {
     Area := Areas.Kokkaupuni
-    MerchantChoice := 1
+    Cooldown := 90000
 
     __New(choices) {
         this.choices := choices
-        this.failures := choices.Clone()
-        Loop this.failures.Length {
-            this.failures[A_Index] := 0
-        }
     }
 
     Act() {
-        this.Cooldown := 500
-        FAILURE_INC := 2
-        WinActivate GameTitle
-        Clear
-        Loop this.choices.Length * FAILURE_INC  * 2 / 3 {
-            if (this.MerchantChoice > this.choices.Length) {
-                this.MerchantChoice := 1
+        MerchantChoice := 1
+        Loop this.choices.Length {
+            if (MerchantChoice > this.choices.Length) {
+                MerchantChoice := 1
             }
-            if (this.failures[this.MerchantChoice] > 0) {
-                this.failures[this.MerchantChoice]--
-                this.MerchantChoice++
-            } else {
-                this.choices[this.MerchantChoice].merchantLocation.Click()
-                if not MaterialTrades.Trade() {
-                    this.failures[this.MerchantChoice] := FAILURE_INC
-                }
-                this.MerchantChoice++
-                Sleep 800
-                return
-            }
+            Clear
+            this.choices[MerchantChoice].merchantLocation.Click()
+            MaterialTrades.Trade()
+            MerchantChoice++
         }
-        this.Cooldown := 60000
     }
     
     static ConsumesGoodMaterial() {
         InputMaterials := Area.FromRaw(800, 200, 910, 300)
         Loop Files, "GoodMaterials\*"
         {
-            if InputMaterials.ImageTest(A_LoopFileFullPath)
+            if InputMaterials.ImageTest(A_LoopFileFullPath) {
                 return true
+            }
         }
         return false
     }
@@ -71,7 +56,7 @@ class MaterialTrades extends Activity {
     static Trade() {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
-        Loop 60 {
+        Loop 10 {
             if not MaterialTrades.ChangeAvailable() and not MaterialTrades.EnoughMaterials() {
                 return false
             }
