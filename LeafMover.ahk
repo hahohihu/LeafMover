@@ -19,7 +19,8 @@ WinActivate GameTitle
 
 poll := TimedPoll()
 poll.AddStartup(Trades())
-Essences := [Essence.Leaf]
+; todo : OCR, make trades more flexible
+Essences := [Essence.Water, Essence.Leaf, Essence.Cosmic]
 ; poll.AddStartup(EssenceCrafting(Essences))
 ; poll.AddStartup(MaterialTrades(Essences))
 ; poll.Add(MaterialFarming())

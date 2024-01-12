@@ -3,7 +3,7 @@
 
 class MaterialTrades extends Activity {
     Area := Areas.Kokkaupuni
-    Cooldown := 80000
+    Cooldown := 3000
 
     __New(choices) {
         this.choices := choices
@@ -26,10 +26,7 @@ class MaterialTrades extends Activity {
         InputMaterials := Area.FromRaw(800, 200, 910, 300)
         Loop Files, "GoodMaterials\*"
         { 
-            ; todo - seem to have false positives ; false negatives are preferable
-            ; disabled for now - not a big difference in conversion ratio
-            if InputMaterials.ImageTest(A_LoopFileFullPath) {
-                Msg "Found: " A_LoopFileFullPath
+            if InputMaterials.ImageTest("*10 " A_LoopFileFullPath) {
                 return true
             }
         }
@@ -66,6 +63,8 @@ class MaterialTrades extends Activity {
                 } else {
                     return false
                 }
+            } else if MaterialTrades.ConsumesGoodMaterial() and MaterialTrades.ChangeAvailable() {
+                RightButton.Click()
             } else {
                 LeftButton.Click()
                 While MaterialTrades.TradePending() {

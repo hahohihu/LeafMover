@@ -10,7 +10,7 @@ class Trades extends Activity {
         LoadPetTeam(1) ; redundant in case of pause from saving
         Clear
         Trades.Open
-        Loop 20 {
+        Loop 50 {
             Trades.CollectAll
             Trades.Refresh
             if not Trades.TradeOnce() {
@@ -45,7 +45,9 @@ class Trades extends Activity {
         InputMaterials := Area.FromRaw(910, y1, 960, y2)
         Loop Files, "Trades\*"
         {
-            if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath) {
+            if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
+                ; and Area.FromRaw(974, y - 10, 1000, y + 10).PixelTest(White) ; at least 2 digits
+            {
                 ; MsgBox "Found " A_LoopFileFullPath " at " x ", " y
                 return true
             }
