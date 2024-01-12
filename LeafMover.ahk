@@ -18,7 +18,10 @@ CoordMode "Mouse", "Client"
 WinActivate GameTitle
 
 poll := TimedPoll()
-poll.AddStartup(Trades())
+poll.AddStartup(Trades([
+    Trade("Cheese", 2000),
+    Trade("Mulch", 30000)
+]))
 ; todo : OCR, make trades more flexible
 Essences := [Essence.Water, Essence.Leaf, Essence.Cosmic]
 ; poll.AddStartup(EssenceCrafting(Essences))

@@ -1,9 +1,21 @@
 #Include "Utility.ahk"
 #Include "Pets.ahk"
 #Include "Activity.ahk"
+#Include "Libs/OCR/Lib/OCR.ahk"
+
+class Trade {
+    __New(Name, Quantity) {
+        this.Name := Name
+        This.Quantity := Quantity
+    }
+}
 
 class Trades extends Activity {
     Cooldown := 120000
+
+    __New(GoodTrades) {
+        this.GoodTrades := GoodTrades
+    }
 
     Act() {
         LoadPetTeam(1)
@@ -13,7 +25,7 @@ class Trades extends Activity {
         Loop 50 {
             Trades.CollectAll
             Trades.Refresh
-            if not Trades.TradeOnce() {
+            if not this.TradeOnce() {
                 break
             }
         }
@@ -41,22 +53,22 @@ class Trades extends Activity {
         }
     }
 
-    static GoodTrade(y1, y2, &x, &y) {
+    GoodTrade(y1, y2, &x, &y) {
         InputMaterials := Area.FromRaw(910, y1, 960, y2)
-        Loop Files, "Trades\*"
-        {
-            if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
-                ; and Area.FromRaw(974, y - 10, 1000, y + 10).PixelTest(White) ; at least 2 digits
+        for trade in this.GoodTrades {
+            Loop Files, "Trades\" trade.Name "*.png"
             {
-                ; MsgBox "Found " A_LoopFileFullPath " at " x ", " y
-                return true
+                if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
+                {
+                    return true
+                }
             }
         }
         return false
     }
 
     ; returns true if there may be more trades
-    static TradeOnce() {
+    TradeOnce() {
         ScrollBottom := Point(1635, 778)
         ScrollUp 4
         yStart := 250
@@ -65,7 +77,7 @@ class Trades extends Activity {
             return false
         }
         while yStart < yEnd {
-            if Trades.GoodTrade(yStart, yStart + 80, &x, &y) {
+            if this.GoodTrade(yStart, yStart + 80, &x, &y) {
                 ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
                 if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                     Clicc(bx, by)
