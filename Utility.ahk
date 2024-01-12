@@ -98,3 +98,7 @@ SetBoolTimer(&Bool, Period) {
         Bool := true
     }
 }
+
+Center() {
+    Clicc 900, 500 ; middle of screen
+}

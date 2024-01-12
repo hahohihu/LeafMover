@@ -1,7 +1,6 @@
 #Include "Utility.ahk"
 #Include "Pets.ahk"
 #Include "Activity.ahk"
-#Include "Libs/OCR/Lib/OCR.ahk"
 
 class Trade {
     __New(Name, Quantity) {
@@ -59,6 +58,7 @@ class Trades extends Activity {
             Loop Files, "Trades\" trade.Name "*.png"
             {
                 if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
+                    and Area.FromRaw(985, y - 10, 1000, y + 10).PixelTest(White) ; at least 3 digits
                 {
                     return true
                 }

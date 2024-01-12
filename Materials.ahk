@@ -8,6 +8,6 @@ class MaterialFarming extends Activity {
     Act() {
         LoadPetTeam(2)
         Clear
-        ScreenScan
+        Center
     }
 }
