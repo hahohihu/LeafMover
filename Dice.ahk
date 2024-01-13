@@ -24,15 +24,7 @@ class DiceFarm extends Activity {
 
     Act() {
         Sleep 1000
-        Clicc 800, 400
-        Sleep 200
-        Clicc 800, 670
-        Sleep 200
-        Clicc 1100, 670
-        Sleep 200
-        Clicc 1100, 400
-        Sleep 200
-        Clicc 800, 400
+        ScreenScan
     }
 }
 

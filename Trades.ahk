@@ -3,9 +3,10 @@
 #Include "Activity.ahk"
 
 class Trade {
-    __New(Name, Quantity) {
+    __New(Name, Offset, Cutoff := 0) {
         this.Name := Name
-        This.Quantity := Quantity
+        this.Offset := Offset
+        this.Cutoff := Cutoff
     }
 }
 
@@ -14,6 +15,7 @@ class Trades extends Activity {
 
     __New(GoodTrades) {
         this.GoodTrades := GoodTrades
+        this.Iterations := 100
     }
 
     Act() {
@@ -55,10 +57,13 @@ class Trades extends Activity {
     GoodTrade(y1, y2, &x, &y) {
         InputMaterials := Area.FromRaw(910, y1, 960, y2)
         for trade in this.GoodTrades {
+            if trade.Cutoff < this.Iterations {
+                continue
+            }
             Loop Files, "Trades\" trade.Name "*.png"
             {
                 if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
-                    and Area.FromRaw(1000, y - 10, 1050, y + 10).PixelTest(White) ; at least 4 digits
+                    and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
                     return true
                 }
@@ -67,7 +72,7 @@ class Trades extends Activity {
         return false
     }
 
-    ; returns true if there may be more trades
+    ; returns false if there are no more possible trades
     TradeOnce() {
         ScrollBottom := Point(1635, 778)
         ScrollUp 10
@@ -76,11 +81,14 @@ class Trades extends Activity {
         if yEnd < 320 {
             return false
         }
+        Iterations := 0
         while yStart < yEnd {
+            Iterations++
             if this.GoodTrade(yStart, yStart + 80, &x, &y) {
                 ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
                 if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                     Clicc(bx, by)
+                    Iterations--
                 }
                 yStart := y + 20
             } else if ScrollBottom.PixelTest(ActiveBeige) or yEnd < Trades.MAX_Y_END {
@@ -91,6 +99,7 @@ class Trades extends Activity {
                 yEnd := Trades.FindYEnd(yStart)
             }
         }
+        this.Iterations := Iterations
         return true
     }
 }
