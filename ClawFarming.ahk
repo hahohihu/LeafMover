@@ -10,7 +10,7 @@ class ClawFarming extends Activity {
     Act() {
         ; requires autostart enabled
         ClawFarming.ClawMachine
-        SetBoolTimer &TimesUp, 70000
+        SetBoolTimer &TimesUp, 30000
         While not TimesUp {
             Gem := ClawFarming.LocateGem()
             if not Gem {

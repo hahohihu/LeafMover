@@ -75,7 +75,7 @@ class Trades extends Activity {
     ; returns false if there are no more possible trades
     TradeOnce() {
         ScrollBottom := Point(1635, 778)
-        ScrollUp 10
+        Send "{WheelUp 50}"
         yStart := 250
         yEnd := Trades.FindYEnd(yStart)
         if yEnd < 320 {

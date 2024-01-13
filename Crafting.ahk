@@ -8,13 +8,7 @@ class Crafting extends Activity {
     MiddleX := 935
 
     Act() {
-        Clicc 755, 900
-        Loop 100 {
-            this.CraftOne()
-        }
-    }
-
-    CraftOne() {
+        Clicc 755, 900 ; crafting
         SetBoolTimer &TimesUp, 30000
         While not TimesUp {
             a := this.FindWhiteX()
