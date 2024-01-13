@@ -3,7 +3,7 @@
 #Include "Activity.ahk"
 
 class Trade {
-    __New(Name, Offset, Cutoff := 100) {
+    __New(Name, Offset, Cutoff := 100000) {
         this.Name := Name
         this.Offset := Offset
         this.Cutoff := Cutoff
