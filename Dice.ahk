@@ -13,7 +13,8 @@ class DiceRoll extends Activity {
     Act() {
         Dice.Open()
         Clicc 530, 872 ; Battlefield
-        Clicc 890, 451
+        Clicc 890, 451 ; Roll
+        Clicc 1181, 300 ; Next
     }
 }
 
@@ -22,7 +23,16 @@ class DiceFarm extends Activity {
     Area := Areas.DiceyMeadows()
 
     Act() {
-        ScreenScan
+        Sleep 1000
+        Clicc 800, 400
+        Sleep 200
+        Clicc 800, 670
+        Sleep 200
+        Clicc 1100, 670
+        Sleep 200
+        Clicc 1100, 400
+        Sleep 200
+        Clicc 800, 400
     }
 }
 
