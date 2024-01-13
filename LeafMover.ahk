@@ -24,8 +24,8 @@ poll := TimedPoll()
 poll.Add(Trades([
     Trade("Mulch", 4, 10),
     Trade("Cheese", 4, 5),
-    Trade("Beer", 4, 100),
-    Trade("Gem", 1, 100)
+    Trade("Beer", 4),
+    Trade("Gem", 1)
 ]))
 ; poll.Add(DiceRoll())
 ; poll.Add(DiceFarm())
