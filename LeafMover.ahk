@@ -8,6 +8,7 @@
 #Include "Materials.ahk"
 #Include "ClawFarming.ahk"
 #Include "Crafting.ahk"
+#Include "Dice.ahk"
 
 ^Esc::ExitApp
 ^P::Pause(-1)
@@ -24,11 +25,13 @@ poll.AddStartup(Trades([
     Trade("Cheese", 0),
     Trade("Beer", 0)
 ]))
+poll.AddStartup(DiceRoll())
+poll.AddStartup(DiceFarm())
 ; todo : OCR, make trades more flexible
 Essences := [Essence.Water, Essence.Leaf, Essence.Cosmic]
 ; poll.AddStartup(EssenceCrafting(Essences))
-; poll.AddStartup(MaterialTrades(Essences))
+poll.AddStartup(MaterialTrades(Essences))
 ; poll.Add(MaterialFarming())
-poll.Add(ClawFarming())
+; poll.Add(ClawFarming())
 ; poll.Add(Crafting())
 poll.Run()

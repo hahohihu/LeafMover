@@ -2,7 +2,7 @@
 #Include "Activity.ahk"
 
 class MaterialTrades extends Activity {
-    Area := Areas.Kokkaupuni
+    Area := Areas.Kokkaupuni()
     Cooldown := 3000
 
     __New(choices) {

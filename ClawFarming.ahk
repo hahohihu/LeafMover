@@ -1,7 +1,7 @@
 #Include "Activity.ahk"
 
 class ClawFarming extends Activity {
-    Area := Areas.CheesePub
+    Area := Areas.CheesePub()
 
     static ClawMachine() {
         Clicc 472, 400 ; claw machine

@@ -31,7 +31,7 @@ class TimedPoll {
             Clear
             if (activity.Area != Areas.Any && activity.Area != area) {
                 area := activity.Area
-                Areas.Open(activity.Area)
+                activity.Area.Open()
             }
             Clear
             activity.Act()
