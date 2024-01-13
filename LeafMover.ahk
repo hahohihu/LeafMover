@@ -7,6 +7,7 @@
 #Include "TimedPoll.ahk"
 #Include "Materials.ahk"
 #Include "ClawFarming.ahk"
+#Include "Crafting.ahk"
 
 ^Esc::ExitApp
 ^P::Pause(-1)
@@ -19,7 +20,6 @@ WinActivate GameTitle
 
 poll := TimedPoll()
 poll.AddStartup(Trades([
-    ; Trade("Cheese", 2000),
     Trade("Mulch", 30000),
     Trade("Cheese", 0),
     Trade("Beer", 0)
@@ -28,6 +28,7 @@ poll.AddStartup(Trades([
 Essences := [Essence.Water, Essence.Leaf, Essence.Cosmic]
 ; poll.AddStartup(EssenceCrafting(Essences))
 ; poll.AddStartup(MaterialTrades(Essences))
-poll.Add(MaterialFarming())
-; poll.Add(ClawFarming())
+; poll.Add(MaterialFarming())
+poll.Add(ClawFarming())
+; poll.Add(Crafting())
 poll.Run()
