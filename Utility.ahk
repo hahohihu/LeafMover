@@ -82,7 +82,7 @@ ScreenScan() {
 ScrollUp(n) {
     Loop n {
         Send "{WheelUp}"
-        Sleep 50
+        Sleep 5
     }
 }
 

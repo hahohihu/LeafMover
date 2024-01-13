@@ -70,7 +70,7 @@ class Trades extends Activity {
     ; returns true if there may be more trades
     TradeOnce() {
         ScrollBottom := Point(1635, 778)
-        ScrollUp 4
+        ScrollUp 10
         yStart := 250
         yEnd := Trades.FindYEnd(yStart)
         if yEnd < 320 {

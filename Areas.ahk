@@ -27,10 +27,11 @@ class Areas {
     class DiceyMeadows {
         Open() {
             ControlSend "v",, GameTitle
+            Sleep 100
             Clicc 500, 870 ; Leaf Galaxy
-            Loop 30 {
-                Clicc 1630, 827
-            }
+            Sleep 100
+            Send "{WheelDown 8000}"
+            Sleep 100
             Clicc 1300, 340
         }
     }

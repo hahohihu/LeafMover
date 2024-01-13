@@ -4,13 +4,6 @@ class TimedPoll {
     }
 
     Add(activity) {
-        SetTimer AddActivity, -activity.Cooldown
-        AddActivity() {
-            this.activities.Push(activity)
-        }
-    }
-
-    AddStartup(activity) {
         this.activities.Push(activity)
     }
 
