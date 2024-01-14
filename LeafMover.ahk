@@ -28,10 +28,10 @@ poll.Add(Trades([
     Trade("Beer", 4, 8),
     Trade("Gem", 1)
 ]))
+poll.Add(Crafting())
 ; poll.Add(DiceRoll())
 ; poll.Add(DiceFarm())
 ; poll.Add(MaterialTrades([Essence.Water, Essence.Leaf, Essence.Cosmic]))
 ; poll.Add(MaterialFarming())
-poll.Add(ClawFarming())
-; poll.Add(Crafting())
+; poll.Add(ClawFarming())
 poll.Run()

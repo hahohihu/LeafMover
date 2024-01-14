@@ -40,10 +40,11 @@ class Areas {
     }
 
     static Current := Areas.Any()
+    static Filler := Areas.Any()
 
     static Goto(area) {
         if area is Areas.Any {
-            if Areas.Filler and Areas.Filler is not Areas.Any {
+            if not (Areas.Filler is Areas.Any) {
                 Areas.Goto(Areas.Filler)
             }
         } else if area != Areas.Current {

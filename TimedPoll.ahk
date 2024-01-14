@@ -23,7 +23,10 @@ class TimedPoll {
             Areas.Goto(activity.Area)
             activity.Act()
             Clear
-            poll.Add(activity)
+            SetTimer AddLater, -activity.Cooldown
+            AddLater() {
+                this.Add(activity)
+            }
         }
     }
 }
