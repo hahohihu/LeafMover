@@ -130,3 +130,13 @@ SetBoolTimer(&Bool, Period) {
 Center() {
     Clicc 900, 500 ; middle of screen
 }
+
+class GUID {
+    static _Current := 0
+
+    static Get() {
+        return GUID._Current++
+    }
+}
+
+DEBUG := true

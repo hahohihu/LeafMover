@@ -65,9 +65,15 @@ class Trades extends Activity {
                 if InputMaterials.ImageSearch(&x, &y, "*15 " A_LoopFileFullPath)
                     and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
+                    if DEBUG {
+                        InputMaterials.SaveImage("Debug/Trades/Good/" GUID.Get() ".png")
+                    }
                     return true
                 }
             }
+        }
+        if DEBUG {
+            InputMaterials.SaveImage("Debug/Trades/Bad/" GUID.Get() ".png")
         }
         return false
     }
