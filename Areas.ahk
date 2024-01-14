@@ -8,43 +8,45 @@ class Areas {
         Sleep 100
     }
 
+    class Tower {
+        Open() {
+            Areas.OpenFavorites()
+            Clicc 1300, 230
+        }
+    }
+
     class Kokkaupuni {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 225
+            Clicc 1300, 330
         }
     }
 
     class CursedKokkaupuni {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 335
+            Clicc 1300, 445
         }
     }
 
     class DarkGlade {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 430
+            Clicc 1300, 531
+        }
+    }
+
+    class DiceyMeadows {
+        Open() {
+            Areas.OpenFavorites()
+            Clicc 1300, 660
         }
     }
 
     class CheesePub {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 550
-        }
-    }
-
-    class DiceyMeadows {
-        Open() {
-            ControlSend "v",, GameTitle
-            Sleep 100
-            Clicc 500, 870 ; Leaf Galaxy
-            Sleep 100
-            Send "{WheelDown 8000}"
-            Sleep 100
-            Clicc 1300, 340
+            Clicc 1300, 767
         }
     }
 
