@@ -9,8 +9,7 @@ class Crafting extends Activity {
 
     Act() {
         Clicc 755, 900 ; crafting
-        SetBoolTimer &TimesUp, 30000
-        While not TimesUp {
+        Loop { ; this would be buggy if it continued with the window closed
             a := this.FindWhiteX()
             da := Abs(this.MiddleX - a)
             Sleep 20

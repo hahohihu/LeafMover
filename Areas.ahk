@@ -38,4 +38,24 @@ class Areas {
 
     class Any {
     }
+
+    static Current := Areas.Any()
+
+    static Goto(area) {
+        if area is Areas.Any {
+            if Areas.Filler and Areas.Filler is not Areas.Any {
+                Areas.Goto(Areas.Filler)
+            }
+        } else if area != Areas.Current {
+            Clear
+            Areas.Current := area
+            area.Open()
+            Clear
+        }
+    }
+
+    ; this area will be entered when "Any" tasks are in progress
+    static SetFillerArea(area) {
+        Areas.Filler := area
+    }
 }

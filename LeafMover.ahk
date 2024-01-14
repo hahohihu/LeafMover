@@ -20,6 +20,7 @@ CoordMode "Mouse", "Client"
 WinActivate GameTitle
 
 poll := TimedPoll()
+Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 poll.Add(Trades([
     Trade("Mulch", 4, 12),
@@ -31,6 +32,6 @@ poll.Add(Trades([
 ; poll.Add(DiceFarm())
 ; poll.Add(MaterialTrades([Essence.Water, Essence.Leaf, Essence.Cosmic]))
 ; poll.Add(MaterialFarming())
-; poll.Add(ClawFarming())
-poll.Add(Crafting())
+poll.Add(ClawFarming())
+; poll.Add(Crafting())
 poll.Run()

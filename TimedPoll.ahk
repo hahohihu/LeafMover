@@ -18,15 +18,9 @@ class TimedPoll {
     }
 
     Run() {
-        area := Areas.Any
         Loop {
             activity := poll.Wait()
-            Clear
-            if (activity.Area != Areas.Any && activity.Area != area) {
-                area := activity.Area
-                activity.Area.Open()
-            }
-            Clear
+            Areas.Goto(activity.Area)
             activity.Act()
             Clear
             poll.Add(activity)

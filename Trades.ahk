@@ -62,7 +62,7 @@ class Trades extends Activity {
             }
             Loop Files, "Trades\" trade.Name "*.png"
             {
-                if InputMaterials.ImageSearch(&x, &y, "*10 " A_LoopFileFullPath)
+                if InputMaterials.ImageSearch(&x, &y, "*15 " A_LoopFileFullPath)
                     and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
                     return true
@@ -75,7 +75,7 @@ class Trades extends Activity {
     ; returns false if there are no more possible trades
     TradeOnce() {
         ScrollBottom := Point(1635, 778)
-        Send "{WheelUp 50}"
+        Send "{WheelUp 2500}"
         yStart := 250
         yEnd := Trades.FindYEnd(yStart)
         if yEnd < 320 {
