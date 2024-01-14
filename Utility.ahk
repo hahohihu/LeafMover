@@ -131,6 +131,11 @@ Center() {
     Clicc 900, 500 ; middle of screen
 }
 
+MakeCleanDir(DirName) {
+    DirDelete(DirName, true)
+    DirCreate(DirName)
+}
+
 class GUID {
     static _Current := 0
 

@@ -12,6 +12,9 @@ class Trade {
 
 class Trades extends Activity {
     Cooldown := 120000
+    static DebugDir := "Debug/Trades/"
+    static DebugGoodDir := Trades.DebugDir "Good/"
+    static DebugBadDir := Trades.DebugDir "Bad/"
 
     __New(GoodTrades) {
         this.GoodTrades := GoodTrades
@@ -66,21 +69,21 @@ class Trades extends Activity {
                     and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
                     if DEBUG {
-                        InputMaterials.SaveImage("Debug/Trades/Good/" GUID.Get() ".png")
+                        InputMaterials.SaveImage(Trades.DebugGoodDir GUID.Get() ".png")
                     }
                     return true
                 }
             }
         }
         if DEBUG {
-            InputMaterials.SaveImage("Debug/Trades/Bad/" GUID.Get() ".png")
+            InputMaterials.SaveImage(Trades.DebugBadDir GUID.Get() ".png")
         }
         return false
     }
 
     ; returns false if there are no more possible trades
     TradeOnce() {
-        ScrollBottom := Point(1635, 778)
+        TradeBottom := Area.FromRaw(300, 712, 310, 782)
         Send "{WheelUp 2500}"
         yStart := 250
         yEnd := Trades.FindYEnd(yStart)
@@ -90,15 +93,15 @@ class Trades extends Activity {
         Iterations := 0
         while yStart < yEnd {
             Iterations++
-            if this.GoodTrade(yStart, yStart + 80, &x, &y) {
-                ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
+            if this.GoodTrade(yStart, yStart + 100, &x, &y) {
+                ExpectedButtonArea := Area.FromRaw(1508, y - 10, 1546, y + 10)
                 if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
                     Clicc(bx, by)
                     Iterations--
                 }
                 yStart := y + 20
-            } else if ScrollBottom.PixelTest(ActiveBeige) or yEnd < Trades.MAX_Y_END {
-                yStart += 75
+            } else if not TradeBottom.PixelTest(White) or yEnd < Trades.MAX_Y_END {
+                yStart += 80
             } else {
                 Send "{WheelDown}"
                 yStart += 5 ; to guarantee progress
@@ -109,3 +112,6 @@ class Trades extends Activity {
         return true
     }
 }
+
+MakeCleanDir(Trades.DebugGoodDir)
+MakeCleanDir(Trades.DebugBadDir)
