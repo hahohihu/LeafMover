@@ -35,6 +35,6 @@ poll.AddNow(Trades([
 ; poll.AddNow(DiceRoll())
 ; poll.AddNow(DiceFarm())
 ; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
-; poll.AddNow(MaterialFarming())
-poll.AddNow(ClawFarming())
+poll.AddNvow(MaterialFarming())
+; poll.AddNow(ClawFarming())
 poll.Run()

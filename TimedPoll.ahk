@@ -35,8 +35,6 @@ class TimedPoll {
     Run() {
         Loop {
             activity := poll.Wait()
-            Log("Activity: " Type(activity))
-            Log("Queue: " this.StringifyQueue())
             Areas.Goto(activity.Area)
             activity.Act()
             Clear

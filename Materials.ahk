@@ -18,9 +18,8 @@ class Witch extends Activity {
 
     Act() {
         this.Count++
-        Log("Witch iteration: " this.Count)
         WitchBar := Area.FromRaw(955, 200, 956, 250)
-        Sleep 10000
+        Sleep 3000
         while WitchBar.PixelTest(AttackTeal) {
             Sleep 1000
         }
