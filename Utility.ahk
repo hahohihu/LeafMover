@@ -29,6 +29,15 @@ class Point {
     Click() {
         Clicc(this.x, this.y)
     }
+
+    ClientToScreen() {
+        hwnd := WinExist(GameTitle)
+        buf := Buffer(8)
+        NumPut("UInt", this.x, buf)
+        NumPut("UInt", this.y, buf, 4)
+        DllCall("ClientToScreen", "Ptr", hwnd, "Ptr", buf) ; https://msdn.microsoft.com/en-us/library/windows/desktop/dd183434(v=vs.85).aspx
+        return Point(NumGet(buf, "Int"), NumGet(buf, 4, "Int"))
+    }
 }
 
 class Area {
@@ -62,7 +71,8 @@ class Area {
         pToken := Gdip_Startup()
         w := this.BottomRight.x - this.TopLeft.x
         h := this.BottomRight.y - this.TopLeft.y
-        snap := Gdip_BitmapFromScreen(this.TopLeft.x "|" this.TopLeft.y "|" w "|" h)
+        screenPoint := this.TopLeft.ClientToScreen()
+        snap := Gdip_BitmapFromScreen(screenPoint.x "|" screenPoint.y "|" w "|" h)
         if snap = -1 {
             throw ValueError("Invalid GDIP x, y, w, or h")
         }
