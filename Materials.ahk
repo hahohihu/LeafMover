@@ -3,11 +3,9 @@
 #Include "Activity.ahk"
 
 class MaterialFarming extends Activity {
-    Area := Areas.DarkGlade
+    Area := Areas.DarkGlade()
 
     Act() {
         LoadPetTeam(2)
-        Clear
-        Center
     }
 }

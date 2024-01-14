@@ -26,8 +26,8 @@ class Trades extends Activity {
         LoadPetTeam(1) ; redundant in case of pause from saving
         Clear
         Trades.Open
+        Trades.CollectAll
         Loop 50 {
-            Trades.CollectAll
             Trades.Refresh
             if not this.TradeOnce() {
                 break
@@ -85,28 +85,28 @@ class Trades extends Activity {
     TradeOnce() {
         TradeBottom := Area.FromRaw(300, 712, 310, 782)
         ScrollUp 10
-        yStart := 250
+        yStart := 200
         yEnd := Trades.FindYEnd(yStart)
         if yEnd < 320 {
             return false
         }
         Iterations := 0
         while yStart < yEnd {
-            Iterations++
-            if this.GoodTrade(yStart, yStart + 100, &x, &y) {
-                ExpectedButtonArea := Area.FromRaw(1500, y - 10, 1550, y + 10)
-                if ExpectedButtonArea.PixelSearch(&bx, &by, ActiveBeige, 5) {
-                    Clicc(bx, by)
+            BlueArrowSearchArea := Area.FromRaw(895, yStart, 896, yStart + 100)
+            if not BlueArrowSearchArea.PixelSearch(&ax, &ay, 0x1ea7e1, 10) {
+                break
+            }
+            ExpectedButton := Point(1490, ay + 10)
+            if ExpectedButton.PixelTest(ActiveBeige) {
+                if this.GoodTrade(ay - 10, ay + 20, &x, &y) {
+                    ExpectedButton.Click()
                     Iterations--
                 }
-                yStart := y + 20
-            } else if not TradeBottom.PixelTest(White) or yEnd < Trades.MAX_Y_END {
-                yStart += 80 ; todo - this is really janky. Instead, use the blue arrow as a more objective marker
-            } else {
-                Send "{WheelDown}"
-                yStart += 5 ; to guarantee progress
-                yEnd := Trades.FindYEnd(yStart)
+            } else if ExpectedButton.PixelTest(BackgroundBrown) {
+                break
             }
+            yStart := ay + 40
+            Iterations++
         }
         this.Iterations := Iterations
         return true

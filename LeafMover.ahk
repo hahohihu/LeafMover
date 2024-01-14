@@ -17,7 +17,7 @@ CoordMode "Mouse", "Client"
 ; client is the default for everything
 ; game must be windowed
 
-DEBUG := false ; magically used elsewhere
+DEBUG := true ; magically used elsewhere
 
 WinActivate GameTitle
 
@@ -25,9 +25,9 @@ poll := TimedPoll()
 ; Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 poll.Add(Trades([
-    Trade("Mulch", 4, 12),
-    Trade("Cheese", 4, 10),
-    Trade("Beer", 4, 8),
+    Trade("Mulch", 4, 4),
+    Trade("Cheese", 4, 3),
+    Trade("Beer", 4, 2),
     Trade("Gem", 1)
 ]))
 ; poll.Add(Crafting())
