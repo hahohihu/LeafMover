@@ -144,4 +144,3 @@ class GUID {
     }
 }
 
-DEBUG := true

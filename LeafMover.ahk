@@ -17,6 +17,8 @@ CoordMode "Mouse", "Client"
 ; client is the default for everything
 ; game must be windowed
 
+DEBUG := false ; magically used elsewhere
+
 WinActivate GameTitle
 
 poll := TimedPoll()
@@ -33,5 +35,5 @@ poll.Add(Crafting())
 ; poll.Add(DiceFarm())
 ; poll.Add(MaterialTrades([Essence.Water, Essence.Leaf, Essence.Cosmic]))
 ; poll.Add(MaterialFarming())
-; poll.Add(ClawFarming())
+poll.Add(ClawFarming())
 poll.Run()
