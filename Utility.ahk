@@ -1,3 +1,5 @@
+#Include "Lib/AHKv2-Gdip/Gdip_All.ahk"
+
 GameTitle := "Leaf Blower Revolution"
 
 BackgroundBrown := 0x97714a
@@ -54,6 +56,22 @@ class Area {
 
     PixelTest(pixel, variation := 0) {
         return this.PixelSearch(&x, &y, pixel, variation)
+    }
+
+    SaveImage(OutputFile) {
+        pToken := Gdip_Startup()
+        w := this.BottomRight.x - this.TopLeft.x
+        h := this.BottomRight.y - this.TopLeft.y
+        snap := Gdip_BitmapFromScreen(this.TopLeft.x "|" this.TopLeft.y "|" w "|" h)
+        if snap = -1 {
+            throw ValueError("Invalid GDIP x, y, w, or h")
+        }
+        res := Gdip_SaveBitmapToFile(snap, OutputFile)
+        if res != 0 {
+            throw Error("Saving bitmap failed with error: " res)
+        }
+        Gdip_DisposeImage(snap)
+        Gdip_Shutdown(pToken) ; todo - do this elsewhere
     }
 }
 
