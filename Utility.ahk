@@ -30,6 +30,11 @@ class Point {
         Clicc(this.x, this.y)
     }
 
+    Move() {
+        MouseMove this.x, this.y
+        Sleep 50
+    }
+
     ClientToScreen() {
         hwnd := WinExist(GameTitle)
         buf := Buffer(8)
@@ -127,9 +132,7 @@ SetBoolTimer(&Bool, Period) {
     }
 }
 
-Center() {
-    Clicc 900, 500 ; middle of screen
-}
+Center := Point(900, 500)
 
 MakeCleanDir(DirName) {
     DirDelete(DirName, true)

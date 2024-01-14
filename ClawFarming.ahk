@@ -30,7 +30,7 @@ class ClawFarming extends Activity {
         ClawShadow := 0x262b44
         Loop 2000 {
             if ExpectedClawArea.PixelTest(ClawShadow, 10) {
-                Center
+                Center.Click()
                 Sleep 2000
                 while TotalClawArea.PixelTest(GemRed, 20) {
                     Sleep 100

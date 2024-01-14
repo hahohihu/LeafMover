@@ -4,6 +4,7 @@
 
 class MaterialFarming extends Activity {
     Area := Areas.DarkGlade()
+    Cooldown := 30000
 
     Act() {
         LoadPetTeam(2)

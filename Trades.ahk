@@ -100,7 +100,6 @@ class Trades extends Activity {
             if ExpectedButton.PixelTest(ActiveBeige) {
                 if this.GoodTrade(ay - 10, ay + 20, &x, &y) {
                     ExpectedButton.Click()
-                    Iterations--
                 }
             } else if ExpectedButton.PixelTest(BackgroundBrown) {
                 break

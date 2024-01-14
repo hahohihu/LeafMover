@@ -25,9 +25,9 @@ poll := TimedPoll()
 ; Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 poll.Add(Trades([
-    Trade("Mulch", 4, 4),
-    Trade("Cheese", 4, 3),
-    Trade("Beer", 4, 2),
+    Trade("Mulch", 1, 5),
+    Trade("Cheese", 1, 4),
+    Trade("Beer", 3, 3),
     Trade("Gem", 1)
 ]))
 ; poll.Add(Crafting())
