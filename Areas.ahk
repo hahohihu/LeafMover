@@ -1,27 +1,39 @@
 #Include "Utility.ahk"
 
 class Areas {
-    class FavoriteArea {
+    static OpenFavorites() {
+        ControlSend "v",, GameTitle
+        Sleep 100
+        Clicc 343, 870 ; Favorites
+        Sleep 100
+    }
+
+    class Kokkaupuni {
         Open() {
-            ControlSend "v",, GameTitle
-            Sleep 100
-            Clicc 343, 870 ; Favorites
-            Sleep 100
-            this.favoriteLocation.Click()
-            Sleep 100
+            Areas.OpenFavorites()
+            Clicc 1300, 225
         }
     }
 
-    class Kokkaupuni extends Areas.FavoriteArea {
-        favoriteLocation := Point(1300, 514)
+    class CursedKokkaupuni {
+        Open() {
+            Areas.OpenFavorites()
+            Clicc 1300, 335
+        }
     }
 
-    class DarkGlade extends Areas.FavoriteArea {
-        favoriteLocation := Point(1300, 626)
+    class DarkGlade {
+        Open() {
+            Areas.OpenFavorites()
+            Clicc 1300, 430
+        }
     }
 
-    class CheesePub extends Areas.FavoriteArea {
-        favoriteLocation := Point(1289, 756)
+    class CheesePub {
+        Open() {
+            Areas.OpenFavorites()
+            Clicc 1300, 550
+        }
     }
 
     class DiceyMeadows {
