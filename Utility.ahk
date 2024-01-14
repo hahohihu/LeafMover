@@ -10,6 +10,7 @@ White := 0xffffff
 GemRed := 0xff0044
 GemDarkRed := 0x5e0c22
 GemShadow := 0xeb2e60
+AttackTeal := 0x2ce8f5
 
 class Point {
     __New(x, y)
@@ -148,3 +149,7 @@ class GUID {
 }
 
 DEBUG := false
+
+Log(text) {
+    FileAppend(A_MM "/" A_DD " @ " A_Hour ":" A_Min ":" A_Sec " --- " text, "Debug/log.txt")
+}

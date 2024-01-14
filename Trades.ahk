@@ -27,7 +27,7 @@ class Trades extends Activity {
         Clear
         Trades.Open
         Trades.CollectAll
-        Loop 100 {
+        Loop 150 {
             Trades.Refresh
             if not this.TradeOnce() {
                 break
