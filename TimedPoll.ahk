@@ -3,8 +3,15 @@ class TimedPoll {
         this.activities := []
     }
 
-    Add(activity) {
+    AddNow(activity) {
         this.activities.Push(activity)
+    }
+
+    AddLater(activity) {
+        SetTimer AddLater, -activity.Cooldown
+        AddLater() {
+            this.AddNow(activity)
+        }
     }
 
     Wait() {
@@ -17,17 +24,24 @@ class TimedPoll {
         }
     }
 
+    StringifyQueue() {
+        ret := ""
+        for activity in this.activities {
+            ret := ret " " Type(activity)
+        }
+        return ret
+    }
+
     Run() {
         Loop {
             activity := poll.Wait()
+            Log("Activity: " Type(activity))
+            Log("Queue: " this.StringifyQueue())
             Areas.Goto(activity.Area)
             activity.Act()
             Clear
             Center.Move()
-            SetTimer AddLater, -activity.Cooldown
-            AddLater() {
-                this.Add(activity)
-            }
+            this.AddLater(activity)
         }
     }
 }
