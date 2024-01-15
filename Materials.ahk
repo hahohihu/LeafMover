@@ -17,10 +17,6 @@ class Witch extends Activity {
     CraftedSet := 4
 
     Act() {
-        WitchBar := Area.FromRaw(955, 200, 956, 250)
-        Sleep 3000
-        while WitchBar.PixelTest(AttackTeal) {
-            Sleep 1000
-        }
+        WaitForBossDeath()
     }
 }

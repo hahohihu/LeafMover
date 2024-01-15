@@ -1,9 +1,13 @@
 #Include "Utility.ahk"
 
 class Areas {
-    static OpenFavorites() {
+    static Open() {
         ControlSend "v",, GameTitle
         Sleep 100
+    }
+
+    static OpenFavorites() {
+        Areas.Open()
         Clicc 343, 870 ; Favorites
         Sleep 100
     }
@@ -48,6 +52,15 @@ class Areas {
         Open() {
             Areas.OpenFavorites()
             Clicc 1300, 767
+        }
+    }
+
+    class CursedHalloween {
+        Open() {
+            Areas.Open()
+            Clicc 1562, 874
+            Sleep 100
+            Clicc 1294, 225
         }
     }
 

@@ -9,6 +9,7 @@
 #Include "ClawFarming.ahk"
 #Include "Crafting.ahk"
 #Include "Dice.ahk"
+#Include "Events.ahk"
 
 ^Esc::ExitApp
 ^P::Pause(-1)
@@ -36,10 +37,11 @@ WinActivate GameTitle
 poll := TimedPoll()
 ; Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
-poll.AddNow(ClawFarming())
+; poll.AddNow(CursedHalloween())
 poll.AddNow(DiceFarm())
 poll.AddNow(TradeActivity)
 poll.AddNow(Witch())
+poll.AddNow(ClawFarming())
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
 ; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
