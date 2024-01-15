@@ -1,8 +1,10 @@
 #Include "Areas.ahk"
+#Include "CraftedSet.ahk"
 
 class Activity {
     Cooldown := 1500
     Area := Areas.Any()
+    CraftedSet := CraftedLeaves.Any
     Act() {
         throw Error("TODO")
     }

@@ -36,6 +36,7 @@ class TimedPoll {
         Loop {
             activity := poll.Wait()
             Areas.Goto(activity.Area)
+            CraftedLeaves.LoadSet(activity.CraftedSet)
             activity.Act()
             Clear
             Center.Move()

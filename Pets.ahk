@@ -17,9 +17,14 @@ class Pets {
         }
         Clicc 350, y
     }
+
+    static Any := 0
 }
 
 LoadPetTeam(n) {
+    if n = Pets.Any {
+        return
+    }
     Pets.OpenTeams
     Pets.LoadTeam(n)
 }

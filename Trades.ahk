@@ -12,6 +12,7 @@ class Trade {
 
 class Trades extends Activity {
     Cooldown := 120000
+    CraftedSet := 1
     static DebugDir := "Debug/Trades/"
     static DebugGoodDir := Trades.DebugDir "Good/"
     static DebugBadDir := Trades.DebugDir "Bad/"
