@@ -12,6 +12,7 @@ class Activity {
 
 class Stay extends Activity {
     Cooldown := 10000
+    MinTime := 0
 
     WithArea(Area) {
         this.Area := Area
@@ -28,7 +29,12 @@ class Stay extends Activity {
         return this
     }
 
+    WithMinTime(MinTime) {
+        this.MinTime := MinTime
+        return this
+    }
+
     Act() {
-        ; nothing
+        Sleep this.MinTime
     }
 }

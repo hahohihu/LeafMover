@@ -19,6 +19,11 @@ CoordMode "Mouse", "Client"
 
 DEBUG := true ; magically used elsewhere
 
+StayInTower := Stay()
+                .WithArea(Areas.Tower())
+                .WithCraftedSet(2)
+                .WithMinTime(55000)
+
 WinActivate GameTitle
 
 poll := TimedPoll()
@@ -35,8 +40,6 @@ poll.AddNow(Witch())
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
 ; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
-; poll.AddNow(ClawFarming())
-poll.AddNow(Stay()
-    .WithArea(Areas.Tower())
-    .WithCraftedSet(2))
+poll.AddNow(ClawFarming())
+; poll.AddNow(StayInTower)
 poll.Run()
