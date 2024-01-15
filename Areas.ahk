@@ -11,6 +11,7 @@ class Areas {
     class Tower {
         Open() {
             Areas.OpenFavorites()
+            Clicc 1533, 277
             Clicc 1300, 230
         }
     }

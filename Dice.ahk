@@ -24,7 +24,7 @@ class DiceFarm extends Activity {
 
     Act() {
         Sleep 1000
-        ScreenScan
+        Area.FromRaw(650, 300, 1250, 725).Scan(100, 100)
     }
 }
 

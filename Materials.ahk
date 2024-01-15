@@ -13,7 +13,7 @@ class MaterialFarming extends Activity {
 
 class Witch extends Activity {
     Area := Areas.CursedKokkaupuni()
-    Cooldown := 180000
+    Cooldown := 165000
 
     Act() {
         WitchBar := Area.FromRaw(955, 200, 956, 250)

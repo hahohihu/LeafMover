@@ -24,17 +24,17 @@ WinActivate GameTitle
 poll := TimedPoll()
 Areas.SetFillerArea(Areas.Tower())
 ; todo : OCR, make trades more flexible
-; poll.AddNow(Witch())
+poll.AddNow(DiceFarm())
 poll.AddNow(Trades([
     Trade("Mulch", 1, 5),
-    Trade("Cheese", 1, 4),
+    Trade("Cheese", 1),
     Trade("Beer", 3, 3),
     Trade("Gem", 1)
 ]))
-poll.AddNow(Crafting())
+poll.AddNow(Witch())
+; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
-; poll.AddNow(DiceFarm())
 ; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
-; poll.AddNow(ClawFarming())
-poll.AddNow(GotoFillerArea())
+poll.AddNow(ClawFarming())
+; poll.AddNow(GotoFillerArea())
 poll.Run()

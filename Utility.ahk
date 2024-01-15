@@ -89,6 +89,17 @@ class Area {
         Gdip_DisposeImage(snap)
         Gdip_Shutdown(pToken) ; todo - do this elsewhere
     }
+
+    Scan(Inc := 200, Delay := 200) {
+        x := this.TopLeft.x
+        While x < this.BottomRight.x {
+            MouseMove x, this.TopLeft.y, 5
+            Sleep Delay
+            MouseMove x, this.BottomRight.y, 5
+            Sleep Delay
+            x += Inc
+        }
+    }
 }
 
 Clicc(x, y) {
