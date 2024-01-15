@@ -19,7 +19,7 @@ class DiceRoll extends Activity {
 }
 
 class DiceFarm extends Activity {
-    Cooldown := 60000
+    Cooldown := 240000
     Area := Areas.DiceyMeadows()
 
     Act() {
