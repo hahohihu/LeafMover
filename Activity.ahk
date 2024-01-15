@@ -10,10 +10,25 @@ class Activity {
     }
 }
 
-class GotoFillerArea extends Activity {
+class Stay extends Activity {
     Cooldown := 10000
 
+    WithArea(Area) {
+        this.Area := Area
+        return this
+    }
+
+    WithCraftedSet(CraftedSet) {
+        this.CraftedSet := CraftedSet
+        return this
+    }
+
+    WithCooldown(Cooldown) {
+        this.Cooldown := Cooldown
+        return this
+    }
+
     Act() {
-        ; nothing - just trigger going back to default area
+        ; nothing
     }
 }

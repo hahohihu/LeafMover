@@ -22,7 +22,7 @@ DEBUG := true ; magically used elsewhere
 WinActivate GameTitle
 
 poll := TimedPoll()
-Areas.SetFillerArea(Areas.Tower())
+; Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 poll.AddNow(DiceFarm())
 poll.AddNow(Trades([
@@ -35,6 +35,8 @@ poll.AddNow(Witch())
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
 ; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
-poll.AddNow(ClawFarming())
-; poll.AddNow(GotoFillerArea())
+; poll.AddNow(ClawFarming())
+poll.AddNow(Stay()
+    .WithArea(Areas.Tower())
+    .WithCraftedSet(2))
 poll.Run()

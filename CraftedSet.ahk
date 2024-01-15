@@ -13,6 +13,7 @@ class CraftedLeaves {
         if n != CraftedLeaves.Any and n != CraftedLeaves.Current {
             Clear
             CraftedLeaves._LoadSet(n)
+            CraftedLeaves.Current := n
             Clear
         }
     }
