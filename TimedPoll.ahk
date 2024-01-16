@@ -36,9 +36,10 @@ class TimedPoll {
     Run() {
         Loop {
             activity := poll.Wait()
-            Log("[" Type(activity) "] " this.StringifyQueue())
+            start := TimeNow()
             WinActivate GameTitle
             activity.Run()
+            Log(start " --- " "[" Type(activity) "] " this.StringifyQueue())
             WinActivate GameTitle
             Clear
             Center.Move()

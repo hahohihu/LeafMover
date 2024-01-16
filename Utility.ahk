@@ -163,8 +163,12 @@ class GUID {
     }
 }
 
+TimeNow() {
+    return A_Hour ":" A_Min ":" A_Sec
+}
+
 Log(text) {
-    FileAppend(A_MM "/" A_DD " @ " A_Hour ":" A_Min ":" A_Sec " --- " text "`n", "Debug/log.txt")
+    FileAppend(A_MM "/" A_DD " @ " TimeNow() " --- " text "`n", "Debug/log.txt")
 }
 
 BossPresent() {
