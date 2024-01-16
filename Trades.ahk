@@ -3,9 +3,8 @@
 #Include "Activity.ahk"
 
 class Trade {
-    __New(Name, Offset, Cutoff := 100000) {
+    __New(Name, Cutoff := 100000) {
         this.Name := Name
-        this.Offset := Offset
         this.Cutoff := Cutoff
     }
 }
@@ -13,7 +12,7 @@ class Trade {
 class Trades extends Activity {
     Cooldown := 120000
     CraftedSet := 1
-    static Debug := false
+    Debug := false
     static DebugDir := "Debug/Trades/"
     static DebugGoodDir := Trades.DebugDir "Good/"
     static DebugBadDir := Trades.DebugDir "Bad/"
@@ -68,16 +67,15 @@ class Trades extends Activity {
             Loop Files, "Trades\" trade.Name "*.png"
             {
                 if InputMaterials.ImageSearch(&x, &y, "*15 " A_LoopFileFullPath)
-                    and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
-                    if Trades.Debug {
+                    if this.Debug {
                         InputMaterials.SaveImage(Trades.DebugGoodDir GUID.Get() ".png")
                     }
                     return true
                 }
             }
         }
-        if Trades.Debug {
+        if this.Debug {
             InputMaterials.SaveImage(Trades.DebugBadDir GUID.Get() ".png")
         }
         return false

@@ -28,10 +28,10 @@ StayInTower := Stay()
     .WithMinTime(55000)
 
 TradeActivity := Trades([
-    Trade("Mulch", 1, 5),
-    Trade("Cheese", 1, 3),
-    Trade("Beer", 3, 3),
-    Trade("Gem", 1)
+    Trade("Mulch", 5),
+    Trade("Cheese", 3),
+    Trade("Beer", 3),
+    Trade("Gem")
 ])
 
 ClawMachine := ClawFarming([
