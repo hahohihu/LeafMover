@@ -163,8 +163,6 @@ class GUID {
     }
 }
 
-DEBUG := false
-
 Log(text) {
     FileAppend(A_MM "/" A_DD " @ " A_Hour ":" A_Min ":" A_Sec " --- " text "`n", "Debug/log.txt")
 }

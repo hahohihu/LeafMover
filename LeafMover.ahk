@@ -22,8 +22,6 @@ CoordMode "Mouse", "Client"
 ; client is the default for everything
 ; game must be windowed
 
-DEBUG := true ; magically used elsewhere
-
 StayInTower := Stay()
     .WithArea(Areas.Tower())
     .WithCraftedSet(2)

@@ -13,6 +13,7 @@ class Trade {
 class Trades extends Activity {
     Cooldown := 120000
     CraftedSet := 1
+    static Debug := false
     static DebugDir := "Debug/Trades/"
     static DebugGoodDir := Trades.DebugDir "Good/"
     static DebugBadDir := Trades.DebugDir "Bad/"
@@ -59,7 +60,7 @@ class Trades extends Activity {
     }
 
     GoodTrade(y1, y2, &x, &y) {
-        InputMaterials := Area.FromRaw(910, y1, 960, y2)
+        InputMaterials := Area.FromRaw(920, y1, 953, y2)
         for trade in this.GoodTrades {
             if trade.Cutoff < this.Iterations {
                 continue
@@ -69,14 +70,14 @@ class Trades extends Activity {
                 if InputMaterials.ImageSearch(&x, &y, "*15 " A_LoopFileFullPath)
                     and Area.FromRaw(960 + 10 * trade.Offset, y - 10, 1010 + 10 * trade.Offset, y + 10).PixelTest(White)
                 {
-                    if DEBUG {
+                    if Trades.Debug {
                         InputMaterials.SaveImage(Trades.DebugGoodDir GUID.Get() ".png")
                     }
                     return true
                 }
             }
         }
-        if DEBUG {
+        if Trades.Debug {
             InputMaterials.SaveImage(Trades.DebugBadDir GUID.Get() ".png")
         }
         return false
@@ -99,7 +100,7 @@ class Trades extends Activity {
             }
             ExpectedButton := Point(1490, ay + 10)
             if ExpectedButton.PixelTest(ActiveBeige) {
-                if this.GoodTrade(ay - 10, ay + 20, &x, &y) {
+                if this.GoodTrade(ay - 8, ay + 22, &x, &y) {
                     ExpectedButton.Click()
                 }
             } else if ExpectedButton.PixelTest(BackgroundBrown) {
