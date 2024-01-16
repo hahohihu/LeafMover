@@ -1,6 +1,7 @@
 class TimedPoll {
-    __New() {
+    __New(BackgroundActivity := Nap()) {
         this.activities := []
+        this.backgroundActivity := BackgroundActivity
     }
 
     AddNow(activity) {
@@ -19,7 +20,7 @@ class TimedPoll {
             try {
                 return this.activities.RemoveAt(1)
             } catch ValueError as e {
-                Sleep 1000
+                this.backgroundActivity.Run()
             }
         }
     }
@@ -37,9 +38,7 @@ class TimedPoll {
             activity := poll.Wait()
             Log("[" Type(activity) "] " this.StringifyQueue())
             WinActivate GameTitle
-            CraftedLeaves.LoadSet(activity.CraftedSet)
-            Areas.Goto(activity.Area)
-            activity.Act()
+            activity.Run()
             WinActivate GameTitle
             Clear
             Center.Move()

@@ -41,17 +41,16 @@ ClawMachine := ClawFarming([
 
 WinActivate GameTitle
 
-poll := TimedPoll()
+poll := TimedPoll(Stay().WithArea(Areas.DarkGlade()))
 Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 ; poll.AddNow(CursedHalloween())
+poll.AddNow(MaterialTrades([Essence.Water]))
 poll.AddNow(DiceFarm())
 poll.AddNow(TradeActivity)
 poll.AddNow(Witch())
 ; poll.AddNow(ClawMachine)
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
-poll.AddNow(MaterialTrades([Essence.Water]))
 ; poll.AddNow(StayInTower)
-poll.AddNow(Stay().WithArea(Areas.DarkGlade()))
 poll.Run()

@@ -24,11 +24,22 @@ class Activity {
             return this.Cooldown
         }
     }
+
+    Run() {
+        CraftedLeaves.LoadSet(this.CraftedSet)
+        Areas.Goto(this.Area)
+        this.Act()
+    }
+}
+
+class Nap extends Activity {
+    Act() {
+        Sleep 1000
+    }
 }
 
 class Stay extends Activity {
-    Cooldown := 10000
-    MinTime := 0
+    MinTime := 3000
 
     WithArea(Area) {
         this.Area := Area
@@ -51,6 +62,7 @@ class Stay extends Activity {
     }
 
     Act() {
+        Center.Move()
         Sleep this.MinTime
     }
 }
