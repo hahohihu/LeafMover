@@ -8,6 +8,22 @@ class Activity {
     Act() {
         throw Error("TODO")
     }
+
+    ModulateCooldown(Faster) {
+        if Faster {
+            this.ActiveCooldown := Max(this.Cooldown, this.GetCooldown() / 2)
+        } else {
+            this.ActiveCooldown := this.GetCooldown() * 2
+        }
+    }
+
+    GetCooldown() {
+        if this.HasProp("ActiveCooldown") {
+            return this.ActiveCooldown
+        } else {
+            return this.Cooldown
+        }
+    }
 }
 
 class Stay extends Activity {

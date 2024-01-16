@@ -11,8 +11,12 @@
 #Include "Dice.ahk"
 #Include "Events.ahk"
 
-^Esc::ExitApp
-^P::Pause(-1)
+^Esc:: ExitApp
+^P:: 
+{
+    WinActivate GameTitle
+    Pause(-1)
+}
 
 CoordMode "Mouse", "Client"
 ; client is the default for everything
@@ -21,29 +25,35 @@ CoordMode "Mouse", "Client"
 DEBUG := true ; magically used elsewhere
 
 StayInTower := Stay()
-                .WithArea(Areas.Tower())
-                .WithCraftedSet(2)
-                .WithMinTime(55000)
+    .WithArea(Areas.Tower())
+    .WithCraftedSet(2)
+    .WithMinTime(55000)
 
 TradeActivity := Trades([
-                    Trade("Mulch", 1),
-                    Trade("Cheese", 1),
-                    Trade("Beer", 3),
-                    Trade("Gem", 1)
-                ])
+    Trade("Mulch", 1, 5),
+    Trade("Cheese", 1, 3),
+    Trade("Beer", 3, 3),
+    Trade("Gem", 1)
+])
+
+ClawMachine := ClawFarming([
+    [GemRed, GemDarkRed, GemShadow],
+    ; [HalloweenOrange, HalloweenYellow, HalloweenGreen]
+])
 
 WinActivate GameTitle
 
 poll := TimedPoll()
-; Areas.SetFillerArea(Areas.DarkGlade())
+Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 ; poll.AddNow(CursedHalloween())
 poll.AddNow(DiceFarm())
 poll.AddNow(TradeActivity)
 poll.AddNow(Witch())
-poll.AddNow(ClawFarming())
+; poll.AddNow(ClawMachine)
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())
-; poll.AddNow(MaterialTrades([Essence.Water, Essence.Cosmic]))
+poll.AddNow(MaterialTrades([Essence.Water]))
 ; poll.AddNow(StayInTower)
+poll.AddNow(Stay().WithArea(Areas.DarkGlade()))
 poll.Run()

@@ -3,7 +3,7 @@
 
 class MaterialTrades extends Activity {
     Area := Areas.Kokkaupuni()
-    Cooldown := 3000
+    Cooldown := 10000
 
     __New(choices) {
         this.choices := choices
@@ -17,7 +17,7 @@ class MaterialTrades extends Activity {
             }
             Clear
             this.choices[MerchantChoice].merchantLocation.Click()
-            MaterialTrades.Trade()
+            this.ModulateCooldown(MaterialTrades.Trade())
             MerchantChoice++
         }
     }
@@ -56,7 +56,7 @@ class MaterialTrades extends Activity {
     static Trade() {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
-        Loop 15 {
+        Loop 50 {
             if not MaterialTrades.EnoughMaterials() {
                 if MaterialTrades.ChangeAvailable() {
                     RightButton.Click()

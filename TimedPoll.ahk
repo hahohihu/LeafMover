@@ -8,7 +8,7 @@ class TimedPoll {
     }
 
     AddLater(activity) {
-        SetTimer AddLater, -activity.Cooldown
+        SetTimer AddLater, -activity.GetCooldown()
         AddLater() {
             this.AddNow(activity)
         }
@@ -35,9 +35,12 @@ class TimedPoll {
     Run() {
         Loop {
             activity := poll.Wait()
+            Log("[" Type(activity) "] " this.StringifyQueue())
+            WinActivate GameTitle
             CraftedLeaves.LoadSet(activity.CraftedSet)
             Areas.Goto(activity.Area)
             activity.Act()
+            WinActivate GameTitle
             Clear
             Center.Move()
             this.AddLater(activity)

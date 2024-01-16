@@ -3,6 +3,10 @@
 class ClawFarming extends Activity {
     Area := Areas.CheesePub()
 
+    __New(Searches) {
+        this.Searches := Searches
+    }
+
     static ClawMachine() {
         Clicc 472, 400 ; claw machine
     }
@@ -41,15 +45,9 @@ class ClawFarming extends Activity {
     }
 
     static LocateGem() {
-        HalloweenOrange := 0xff9e13
-        HalloweenYellow := 0xffff23
-        HalloweenGreen := 0x6cd820
-        Searches := [
-            [GemRed, GemDarkRed, GemShadow],
-            [HalloweenOrange, HalloweenYellow, HalloweenGreen]
-        ]
+        Searches := 
         Rewards := Area.FromRaw(310, 477, 1540, 715)
-        for search in Searches {
+        for search in this.Searches {
             if not Rewards.PixelSearch(&x, &y, search[2], 20) {
                 continue
             }

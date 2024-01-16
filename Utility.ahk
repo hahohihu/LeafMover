@@ -12,6 +12,9 @@ GemDarkRed := 0x5e0c22
 GemShadow := 0xeb2e60
 AttackTeal := 0x2ce8f5
 HpBarRed := 0xff0000
+HalloweenOrange := 0xff9e13
+HalloweenYellow := 0xffff23
+HalloweenGreen := 0x6cd820
 
 class Point {
     __New(x, y)
