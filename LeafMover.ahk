@@ -25,7 +25,7 @@ CoordMode "Mouse", "Client"
 StayInTower := Stay()
     .WithArea(Areas.Tower())
     .WithCraftedSet(2)
-    .WithMinTime(55000)
+    .WithMinTime(30000)
 
 TradeActivity := Trades([
     Trade("Mulch", 5),
@@ -41,14 +41,15 @@ ClawMachine := ClawFarming([
 
 WinActivate GameTitle
 
-poll := TimedPoll(Stay().WithArea(Areas.DarkGlade()))
+; poll := TimedPoll(Stay().WithArea(Areas.DarkGlade()))
+poll := TimedPoll(StayInTower)
 Areas.SetFillerArea(Areas.DarkGlade())
 ; todo : OCR, make trades more flexible
 ; poll.AddNow(CursedHalloween())
-poll.AddNow(DiceFarm())
 poll.AddNow(TradeActivity)
+poll.AddNow(DiceFarm())
 poll.AddNow(Witch())
-poll.AddNow(MaterialTrades([Essence.Water]))
+; poll.AddNow(MaterialTrades([Essence.Water]))
 ; poll.AddNow(ClawMachine)
 ; poll.AddNow(Crafting())
 ; poll.AddNow(DiceRoll())

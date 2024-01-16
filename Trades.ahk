@@ -60,6 +60,9 @@ class Trades extends Activity {
 
     GoodTrade(y1, y2, &x, &y) {
         InputMaterials := Area.FromRaw(920, y1, 953, y2)
+        if not Area.FromRaw(970, y1, 985, y2).PixelTest(White) {
+            return false ; only triggers on small quantities
+        }
         for trade in this.GoodTrades {
             if trade.Cutoff < this.Iterations {
                 continue

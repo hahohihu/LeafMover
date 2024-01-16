@@ -57,7 +57,9 @@ class MaterialTrades extends Activity {
         RightButton := Point(1530, 230)
         LeftButton := Point(1330, 230)
         Loop 50 {
-            if not MaterialTrades.EnoughMaterials() {
+            if MaterialTrades.TradePending() {
+                RightButton.Click()
+            } else if not MaterialTrades.EnoughMaterials() {
                 if MaterialTrades.ChangeAvailable() {
                     RightButton.Click()
                 } else {
@@ -67,11 +69,15 @@ class MaterialTrades extends Activity {
                 RightButton.Click()
             } else {
                 LeftButton.Click()
-                While MaterialTrades.TradePending() {
-                    Sleep 100
+                Loop 20 {
+                    if not MaterialTrades.TradePending() {
+                        break
+                    }
+                    Sleep 200
                 }
                 LeftButton.Click()
             }
+            Sleep 100
         }
         return true
     }
