@@ -2,7 +2,7 @@
 
 class CraftedLeaves {
     static _LoadSet(n) {
-        Clicc 755, 900 ; crafting
+        Clicc 1114, 900 ; crafting
         Clicc 1130, 875 ; Sets
         Clicc 415, 420 + (n - 1) * 102
     }

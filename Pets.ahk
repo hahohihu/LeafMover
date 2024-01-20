@@ -2,7 +2,7 @@
 
 class Pets {
     static OpenTeams() {
-        Clicc 444, 53
+        Clicc 500, 53
         Clicc 544, 872
     }
 

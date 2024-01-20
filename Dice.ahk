@@ -3,7 +3,7 @@
 
 class Dice {
     static Open() {
-        Clicc 905, 900
+        Clicc 1466, 905
     }
 }
 

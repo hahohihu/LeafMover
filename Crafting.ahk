@@ -10,7 +10,7 @@ class Crafting extends Activity {
     Cooldown := 0 ; This is a one-off
 
     Act() {
-        Clicc 755, 900 ; crafting
+        Clicc 1105, 900 ; crafting
         Clicc 350, 870
         if this.StopBrightSpot.PixelTest(BackgroundBrown) {
             Clicc 679, 815

@@ -16,7 +16,7 @@ class ClawFarming extends Activity {
         ClawFarming.ClawMachine
         SetBoolTimer &TimesUp, 30000
         While not TimesUp {
-            Item := ClawFarming.LocateGem()
+            Item := this.LocateGem()
             if not Item {
                 ControlSend "{Esc}",, GameTitle
                 ClawFarming.ClawMachine
@@ -44,8 +44,7 @@ class ClawFarming extends Activity {
         }
     }
 
-    static LocateGem() {
-        Searches := 
+    LocateGem() {
         Rewards := Area.FromRaw(310, 477, 1540, 715)
         for search in this.Searches {
             if not Rewards.PixelSearch(&x, &y, search[2], 20) {

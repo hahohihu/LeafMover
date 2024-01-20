@@ -10,6 +10,10 @@ class CursedHalloween extends Activity {
         Clicc 1200, 541 ; Weakness
         Clicc 1200, 647 ; bonus curses
         Clear
-        this.ModulateCooldown(WaitForBossDeath())
+        Success := WaitForBossDeath()
+        this.ModulateCooldown(Success)
+        if not Success {
+            ToolTip "Failed Pumpkin boss!"
+        }
     }
 }

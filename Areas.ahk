@@ -15,7 +15,7 @@ class Areas {
     class Tower {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1533, 277
+            ; Clicc 1533, 277 ; Max
             Clicc 1300, 230
         }
     }

@@ -13,7 +13,7 @@ class MaterialFarming extends Activity {
 
 class Witch extends Activity {
     Area := Areas.CursedKokkaupuni()
-    Cooldown := 165000
+    Cooldown := 157000
     CraftedSet := 4
 
     Act() {
