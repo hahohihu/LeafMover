@@ -30,7 +30,7 @@ StayInTower := Stay()
 TradeActivity := Trades([
     Trade("Cheese", 2),
     Trade("Beer", 2),
-    Trade("Borb"),
+    Trade("Borb", 5),
     Trade("Gem")
 ])
 

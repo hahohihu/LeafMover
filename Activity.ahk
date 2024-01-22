@@ -27,7 +27,7 @@ class Activity {
     }
 
     Run() {
-        LoadPetTeam(this.PetTeam)
+        Pets.LoadTeam(this.PetTeam)
         CraftedLeaves.LoadSet(this.CraftedSet)
         Areas.Goto(this.Area)
         this.Act()

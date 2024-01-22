@@ -6,7 +6,8 @@ class Pets {
         Clicc 544, 872
     }
 
-    static LoadTeam(n) {
+    static _LoadTeam(n) {
+        Pets.OpenTeams
         switch n {
             case 1:
                 y := 425
@@ -19,14 +20,14 @@ class Pets {
     }
 
     static Any := 0
-}
+    static Current := Pets.Any
 
-LoadPetTeam(n) {
-    Clear
-    if n = Pets.Any {
-        return
+    static LoadTeam(n) {
+        if n != Pets.Any and n != Pets.Current {
+            Clear
+            Pets._LoadTeam(n)
+            Pets.Current := n
+            Clear
+        }
     }
-    Pets.OpenTeams
-    Pets.LoadTeam(n)
-    Clear
 }
