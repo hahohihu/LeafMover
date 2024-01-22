@@ -12,6 +12,7 @@ class Trade {
 class Trades extends Activity {
     Cooldown := 120000
     CraftedSet := 1
+    PetTeam := 1
     Debug := false
     static DebugDir := "Debug/Trades/"
     static DebugGoodDir := Trades.DebugDir "Good/"
@@ -23,8 +24,6 @@ class Trades extends Activity {
     }
 
     Act() {
-        LoadPetTeam(1)
-        LoadPetTeam(1) ; redundant in case of pause from saving
         Clear
         Trades.Open
         Trades.CollectAll

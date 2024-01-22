@@ -22,9 +22,11 @@ class Pets {
 }
 
 LoadPetTeam(n) {
+    Clear
     if n = Pets.Any {
         return
     }
     Pets.OpenTeams
     Pets.LoadTeam(n)
+    Clear
 }

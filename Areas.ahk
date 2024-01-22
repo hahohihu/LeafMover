@@ -45,22 +45,21 @@ class Areas {
     class DarkGlade {
         Open() {
             Areas.OpenFavorites()
-            throw Error("Deprecated")
-            ; Clicc 1300, 531
+            Clicc 1300, 321
         }
     }
 
     class DiceyMeadows {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 322
+            Clicc 1300, 441
         }
     }
 
     class CheesePub {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 425
+            Clicc 1300, 548
         }
     }
 

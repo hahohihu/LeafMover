@@ -5,6 +5,7 @@ class Activity {
     Cooldown := 1500
     Area := Areas.Any()
     CraftedSet := CraftedLeaves.Any
+    PetTeam := Pets.Any
     Act() {
         throw Error("TODO")
     }
@@ -26,6 +27,7 @@ class Activity {
     }
 
     Run() {
+        LoadPetTeam(this.PetTeam)
         CraftedLeaves.LoadSet(this.CraftedSet)
         Areas.Goto(this.Area)
         this.Act()
@@ -58,6 +60,11 @@ class Stay extends Activity {
 
     WithMinTime(MinTime) {
         this.MinTime := MinTime
+        return this
+    }
+
+    WithPetTeam(PetTeam) {
+        this.PetTeam := PetTeam
         return this
     }
 
