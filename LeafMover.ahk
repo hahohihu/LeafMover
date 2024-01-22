@@ -28,11 +28,11 @@ StayInTower := Stay()
     .WithMinTime(30000)
 
 TradeActivity := Trades([
-    Trade("Mulch"),
+    Trade("Mulch", 2),
     Trade("Cheese", 2),
     Trade("Beer", 2),
-    Trade("Gem"),
-    Trade("Borb")
+    Trade("Borb"),
+    Trade("Gem")
 ])
 
 ClawMachine := ClawFarming([
@@ -44,17 +44,17 @@ WinActivate GameTitle
 
 ; poll := TimedPoll(Stay().WithArea(Areas.DarkGlade()))
 ; poll := TimedPoll()
-poll := TimedPoll(StayInTower)
-; poll := TimedPoll(ClawMachine)
-Areas.SetFillerArea(Areas.DarkGlade())
+; poll := TimedPoll(StayInTower)
+poll := TimedPoll(ClawMachine)
+; Areas.SetFillerArea(Areas.DarkGlade())
 ; Areas.SetFillerArea(Areas.Tower())
 ; todo : OCR, make trades more flexible
 ; poll.AddNow(CursedHalloween())
+poll.AddNow(Crafting())
 poll.AddNow(DiceFarm())
 poll.AddNow(Witch())
+poll.AddNow(Centaur())
+poll.AddNow(VileCreature())
 poll.AddNow(TradeActivity)
 ; poll.AddNow(MaterialTrades([Essence.Water]))
-; poll.AddNow(Crafting())
-; poll.AddNow(DiceRoll())
-; poll.AddNow(StayInTower)
 poll.Run()

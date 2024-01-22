@@ -12,49 +12,73 @@ class Areas {
         Sleep 100
     }
 
+    static OpenNebula() {
+        Areas.Open()
+        Clicc 683, 870
+        Sleep 100
+    }
+
     class Tower {
         Open() {
             Areas.OpenFavorites()
             ; Clicc 1533, 277 ; Max
-            Clicc 1300, 230
+            throw Error("Deprecated")
+            ; Clicc 1300, 230
         }
     }
 
     class Kokkaupuni {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 330
+            throw Error("Deprecated")
+            ; Clicc 1300, 330
         }
     }
 
     class CursedKokkaupuni {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 445
+            Clicc 1300, 225
         }
     }
 
     class DarkGlade {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 531
+            throw Error("Deprecated")
+            ; Clicc 1300, 531
         }
     }
 
     class DiceyMeadows {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 660
+            Clicc 1300, 322
         }
     }
 
     class CheesePub {
         Open() {
             Areas.OpenFavorites()
-            Clicc 1300, 767
+            Clicc 1300, 425
         }
     }
 
+    class ExlatedBridge {
+        Open() {
+            Areas.OpenNebula()
+            Clicc 1291, 320
+        }
+    }
+
+
+    class VilewoodCemetery {
+        Open() {
+            Areas.OpenNebula()
+            Clicc 1291, 520
+        }
+    }
+    
     class CursedHalloween {
         Open() {
             Areas.Open()

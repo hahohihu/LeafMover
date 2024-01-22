@@ -20,3 +20,28 @@ class Witch extends Activity {
         WaitForBossDeath()
     }
 }
+
+class Centaur extends Activity {
+    Area := Areas.ExlatedBridge()
+    Cooldown := 180000
+    CraftedSet := 3
+
+    Act() {
+        LoadPetTeam(3)
+        Clear
+        WaitForBossDeath()
+    }
+}
+
+class VileCreature extends Activity {
+    Area := Areas.VilewoodCemetery()
+    Cooldown := 180000
+    CraftedSet := 3
+
+    Act() {
+        LoadPetTeam(3)
+        Clear
+        WaitForBossDeath()
+    }
+}
+
